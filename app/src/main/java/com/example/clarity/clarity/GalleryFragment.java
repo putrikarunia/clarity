@@ -79,6 +79,7 @@ public class GalleryFragment extends Fragment {
                                     int position, long id) {
                 Intent intent = new Intent(v.getContext(), FileList.class);
                 intent.putExtra("folder", nameList.get(position));
+                intent.putExtra("galleryFolderName", galleryFolderName);
                 getActivity().startActivityForResult(intent, position);
             }
         });
