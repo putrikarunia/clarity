@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Clarity</string>
+
+    <!--Bottom Nav-->
+    <string name="bottom_nav_gallery">Gallery</string>
+    <string name="bottom_nav_add">Add</string>
+    <string name="bottom_nav_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

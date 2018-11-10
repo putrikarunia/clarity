@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_gallery"
+        android:title="@string/bottom_nav_gallery"
+        android:icon="@drawable/folder"/>
+    <item android:id="@+id/action_add"
+        android:title="@string/bottom_nav_add"
+        android:icon="@drawable/add"/>
+    <item android:id="@+id/action_settings"
+        android:title="@string/bottom_nav_settings"
+        android:icon="@drawable/settings" />
+</menu>
