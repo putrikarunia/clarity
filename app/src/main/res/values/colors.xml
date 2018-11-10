@@ -9,6 +9,6 @@
     <color name="colorPrimaryLight">#98DACD</color>
     <color name="defaultBackground">#FCFAF5</color>
     <color name="defaultText">#3F3F3D</color>
-    <color name="defaultTextTransparent">#3F3F3D32</color>
+    <color name="defaultTextTransparent">#823F3F3D</color>
     <color name="defaultHighlight">#FBDDA1</color>
 </resources>

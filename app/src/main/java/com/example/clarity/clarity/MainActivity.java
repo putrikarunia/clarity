@@ -10,12 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.File;
+
 import static android.support.design.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigation;
     private Fragment fragment;
     private FragmentManager fragmentManager;
+    private String mainFolder = "Clarity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
         setupNavigationView();
     }
 
+    private void setupFileSystem() {
+        File folder = new File(getFilesDir(), mainFolder);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+    }
 
     private void setupNavigationView() {
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -50,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id){
                     case R.id.action_gallery:
-                        fragment = new AddFragment();
+                        fragment = new GalleryFragment();
                         break;
                     case R.id.action_add:
                         fragment = new AddFragment();

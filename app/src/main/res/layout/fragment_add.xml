@@ -13,36 +13,59 @@
     android:gravity="center"
     >
 
-    <ImageView
-    android:id="@+id/main_image"
-    android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:src="@drawable/main_image"/>
+        <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/main_image"/>
 
-    <TextView
-    android:id="@+id/main_text_header"
-    android:layout_marginTop="-70dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/main_image"
-    android:text="Start Reading."
-    android:fontFamily="@font/raleway_bold"
-    android:textSize="24dp"
-    android:textColor="@color/defaultText"
-    />
+        <TextView
+        android:id="@+id/main_text_header"
+        android:layout_marginTop="-70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_image"
+        android:text="Start Reading."
+        android:fontFamily="@font/raleway_bold"
+        android:textSize="24dp"
+        android:textColor="@color/defaultText"
+        />
 
-    <TextView
-    android:id="@+id/main_text_subtitle"
-    android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/main_text_header"
-    android:text="Start by pasting some text or take a picture of documents or signs."
-    android:fontFamily="@font/open_sans_regular"
-    android:textSize="14dp"
-    android:textColor="@color/defaultTextTransparent"
-    />
+        <TextView
+        android:id="@+id/main_text_subtitle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_text_header"
+        android:text="Start by pasting some text or take a picture of documents or signs."
+        android:fontFamily="@font/open_sans_regular"
+        android:textSize="14dp"
+        android:textColor="@color/defaultTextTransparent"
+        />
 
+        <Button
+            android:id="@+id/paste_text"
+            android:layout_width="300dp"
+            android:layout_height="130dp"
+            android:layout_below="@id/main_text_subtitle"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/paste_button_bg"
+            android:text="Paste Text"
+            android:fontFamily="@font/raleway_bold"
+            android:textColor="@color/colorPrimary"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/use_cam"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@id/paste_text"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/use_cam"
+            android:layout_marginTop="-35dp"
+            />
 
     </RelativeLayout>
 

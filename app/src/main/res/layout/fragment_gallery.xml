@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GalleryFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/empty_gallery_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/empty_gallery"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="100dp"
+            >
+            <TextView
+                android:id="@+id/gallery_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Folders"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="@color/defaultText"
+                android:textSize="24dp"
+                />
+
+            <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gridview"
+                android:layout_below="@+id/gallery_header"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnWidth="90dp"
+                android:numColumns="auto_fit"
+                android:verticalSpacing="30dp"
+                android:horizontalSpacing="10dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/create_folder"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/add_folder"
+            android:scaleType="fitCenter"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+
+
+</FrameLayout>
