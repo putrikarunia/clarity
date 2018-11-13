@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultBackground"
+    android:id="@+id/fragment_paste"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageButton
+        android:id="@+id/button_switch_to_cam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@color/defaultBackground"
+        android:paddingRight="30dp"
+        android:paddingTop="30dp"
+        app:srcCompat="@drawable/switch_cam_mode" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/defaultBackground">
+
+
+        <TextView
+            android:id="@+id/paste_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Add Text"
+            android:textColor="@color/defaultText"
+            android:textSize="24dp" />
+
+        <ImageView
+            android:id="@+id/header_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/header_line" />
+
+        <TextView
+            android:id="@+id/paste_input_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="166dp"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:text="0 / 1000"
+            android:textSize="14sp"
+            app:fontFamily="@font/open_sans_regular" />
+
+        <Button
+            android:id="@+id/button_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/translate_button"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Translate"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/paste_input_count"
+            android:layout_marginTop="56dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/paste_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="310dp"
+                    android:gravity="top|left"
+                    android:hint="Copy and paste some text here to begin!"
+                    android:padding="1dp"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/open_sans_regular" />
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

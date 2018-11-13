@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultBackground"
+    android:id="@+id/fragment_translate"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/btn_save_text"
+        android:layout_width="80dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="330dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/save_text_button"
+        android:gravity="right" />
+
+
+    <RelativeLayout
+        android:id="@+id/translation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/defaultBackground">
+
+
+        <TextView
+            android:id="@+id/translate_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Translation"
+            android:textColor="@color/defaultText"
+            android:textSize="24dp" />
+
+        <ImageView
+            android:id="@+id/header_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/header_line" />
+
+        <ImageView
+            android:id="@+id/highlighter"
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:layout_marginTop="57dp"
+            app:srcCompat="@color/defaultHighlight" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/paste_input_count"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="56dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_translation"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/tracker"
+        android:layout_width="90dp"
+        android:layout_height="160dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="315dp"
+        android:layout_marginTop="450dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_up"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:background="@drawable/tracker_up" />
+
+        <Button
+            android:id="@+id/btn_down"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="-50dp"
+            android:background="@drawable/tracker_down" />
+
+        <Button
+            android:id="@+id/btn_play_all"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="-40dp"
+            android:background="@drawable/audio_whole_text" />
+    </LinearLayout>
+
+</FrameLayout>

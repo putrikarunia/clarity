@@ -19,7 +19,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".FileList"></activity>
+        <activity android:name=".FileList" />
+        <activity
+            android:name=".PasteText"
+            android:label="@string/title_activity_paste_text"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".TranslateText"></activity>
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA"> </uses-permission>
 
 </manifest>

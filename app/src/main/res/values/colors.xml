@@ -7,8 +7,8 @@
     <color name="colorPrimary">#79C1B3</color>
     <color name="colorPrimaryTransparent">#D7ECE8</color>
     <color name="colorPrimaryLight">#98DACD</color>
-    <color name="defaultBackground">#FCFAF5</color>
+    <color name="defaultBackground">#fcfaf5</color>
     <color name="defaultText">#3F3F3D</color>
     <color name="defaultTextTransparent">#823F3F3D</color>
-    <color name="defaultHighlight">#FBDDA1</color>
+    <color name="defaultHighlight">#fbdda1</color>
 </resources>
