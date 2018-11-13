@@ -3,10 +3,15 @@ package com.example.clarity.clarity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +22,40 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.BreakIterator;
 import java.util.Locale;
 
 import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
 
 public class TranslateFragment extends Fragment {
 
-    View v;
-    Context context;
-    String input = "";
-    TextView translation;
-    Button trackUp, trackDown, playAll, saveText;
-    ImageView highlighter;
-    int shift;            // highlight shift
+    // Variables
+    private View v;
+    private Context context;
+
+    // Input variables
+    private String input = "";            // Stores user input
+    private TextView translation;         // TextView of translated input
+
+    // Tracker variables
+    private Button trackUp, trackDown;
+    private ImageView highlighter;        // Tracker highlighter
+    private int shift;                    // highlight shift increment
+    private int numOfLines = 0;           // # of lines in input TextView (sets bounds for tracker)
+    private int currTracker = 1;          // Current line of tracker - default: starts at 0
+
+    // Word-selection variables
+    private String selectedWord = "";     // Selected word
+
+    // Text-to-Speech variables
+    private Button playAll;
     private TextToSpeech tts;
+
+    // Saving text variables
+    private Button saveText;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,7 +74,20 @@ public class TranslateFragment extends Fragment {
         translation = (TextView) v.findViewById(R.id.text_translation);
         Typeface font = Typeface.createFromAsset(context.getAssets(),  "fonts/OpenDyslexic-Regular.otf");
         translation.setTypeface(font);
+
+        // Update TextView to input
         translation.setText(input);
+        //numOfLines = translation.getLineCount() + 1; // set number of lines for tracker's bounds
+
+        translation.post(new Runnable() {
+            @Override
+            public void run() {
+                numOfLines = translation.getLineCount();
+            }
+        });
+
+        // Tracks word selection
+        trackWordSelection();
 
 
         // Enable highlighter settings
@@ -88,7 +125,6 @@ public class TranslateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 speakOut(translation);
-
             }
         });
 
@@ -116,16 +152,19 @@ public class TranslateFragment extends Fragment {
                 (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
 
         if (dir.equals("up")) {             // Move Up
-
-            lp.setMargins(lp.leftMargin, lp.topMargin - shift, lp.rightMargin, lp.bottomMargin);
-            highlighter.setLayoutParams(lp);
+            if (currTracker > 1) {
+                lp.setMargins(lp.leftMargin, lp.topMargin - shift, lp.rightMargin, lp.bottomMargin);
+                highlighter.setLayoutParams(lp);
+                currTracker -= 1;   // Decrement tracker line
+            }
 
 
         } else if (dir.equals("down")) {    // Move Down
-
-            lp.setMargins(lp.leftMargin, lp.topMargin + shift, lp.rightMargin, lp.bottomMargin);
-            highlighter.setLayoutParams(lp);
-
+            if (currTracker < numOfLines) {
+                lp.setMargins(lp.leftMargin, lp.topMargin + shift, lp.rightMargin, lp.bottomMargin);
+                highlighter.setLayoutParams(lp);
+                currTracker += 1;   // Increment tracker line
+            }
         }
 
     }
@@ -172,6 +211,64 @@ public class TranslateFragment extends Fragment {
         // to-do
 
     }
+
+
+    // Tracks word selection
+    private void trackWordSelection() {
+
+        // Trim text down by words
+        String input = translation.getText().toString().trim();
+
+        // Set translate text view to text broken down into words
+        TextView translateView = (TextView) v.findViewById(R.id.text_translation);
+        translateView.setMovementMethod(LinkMovementMethod.getInstance());
+        translateView.setText(input, TextView.BufferType.SPANNABLE);
+
+        Spannable span = (Spannable) translateView.getText();
+        BreakIterator iterator = BreakIterator.getWordInstance(Locale.US);
+        iterator.setText(input);
+
+        int start = iterator.first();
+        for (int end = iterator.next(); end != BreakIterator.DONE; start = end, end = iterator
+                .next()) {
+
+
+            String possibleWord = input.substring(start, end);
+            if (Character.isLetterOrDigit(possibleWord.charAt(0))) {
+                ClickableSpan clickSpan = getClickableSpan(possibleWord);
+                span.setSpan(clickSpan, start, end,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            }
+
+        }
+
+
+    }
+
+    // Highlights selected word
+    private ClickableSpan getClickableSpan(final String word) {
+        return new ClickableSpan() {
+            final String selected;
+            {   selected = word;    }
+
+            @Override
+            public void onClick(View widget) {
+                selectedWord = selected;
+                Log.d("tapped on:", selected);
+                Toast.makeText(widget.getContext(), selected, Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                //super.updateDrawState(ds);
+                //ds.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/OpenDyslexic-Bold.otf"));
+            }
+
+        };
+    }
+
 
 
     // Helper functions
