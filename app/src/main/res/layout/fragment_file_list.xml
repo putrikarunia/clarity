@@ -4,8 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FileList"
+    android:id="@+id/fragment_file_list"
+    tools:context=".FileListFragment"
     android:background="@color/defaultBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_back_file_list"
+            android:layout_width="12dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/back"
+            android:gravity="right" />
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/empty_folder_image"

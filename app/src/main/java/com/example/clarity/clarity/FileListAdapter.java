@@ -1,6 +1,5 @@
 package com.example.clarity.clarity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +14,11 @@ public class FileListAdapter extends BaseAdapter {
     private List<String> Titles;
     private List<String> SubTitles;
     LayoutInflater inflter;
-    Activity activity;
 
-    public FileListAdapter(Context c, List<String> titles, List<String> subTitles, Activity activity) {
+    public FileListAdapter(Context c, List<String> titles, List<String> subTitles) {
         mContext = c;
         Titles = titles;
         SubTitles = subTitles;
-        this.activity = activity;
         inflter = (LayoutInflater.from(c));
     }
 

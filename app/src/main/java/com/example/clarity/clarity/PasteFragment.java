@@ -87,11 +87,14 @@ public class PasteFragment extends Fragment {
             Fragment newFragment = new TranslateFragment();
             Bundle args = new Bundle();                             // Use bundle to send info from fragment to fragment
             args.putString("input", input.getText().toString());    // Store user input into bundle
+            args.putString("title", "");    // No title
             newFragment.setArguments(args);                         // Set next fragment's args to bundle
 
             // Switch fragment views
-            getFragmentManager().beginTransaction().replace(R.id.fragment_paste, newFragment).commit();
-
+            getFragmentManager().beginTransaction()
+                    .add(R.id.fragment_paste, newFragment)
+                    .addToBackStack(null)
+                    .commit();
         }
 
     }

@@ -1,13 +1,15 @@
 package com.example.clarity.clarity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
+import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -16,15 +18,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.BreakIterator;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
@@ -38,6 +49,10 @@ public class TranslateFragment extends Fragment {
     // Input variables
     private String input = "";            // Stores user input
     private TextView translation;         // TextView of translated input
+
+    // Title variables
+    private String title = "";            // Stores title if applicable (from saved file)
+    private TextView translationTitle;
 
     // Tracker variables
     private Button trackUp, trackDown;
@@ -57,7 +72,17 @@ public class TranslateFragment extends Fragment {
 
     // Saving text variables
     private Button saveText;
+    private ImageButton exitFolderContainer;
+    private ImageButton addFolderContainer;
+    private RelativeLayout folderContainer;
+    private boolean folderContainerUp = false;
+    FolderListAdapter folderListAdapter;
+    private ListView folderListView;
+    List<File> folderList = new ArrayList<>();
+    List<String> folderNameList = new ArrayList<>();
 
+    // Back button
+    private Button back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +96,12 @@ public class TranslateFragment extends Fragment {
         // Retrieve user input
         input = getArguments().getString("input");
 
+        // Set title if applicable
+        translationTitle = v.findViewById(R.id.translate_header);
+        title = getArguments().getString("title");
+        if (!title.equals("")) {
+            translationTitle.setText(title);
+        }
 
         // Update Translation TextView settings
         String selectedFont = "fonts/OpenDyslexic-Regular.otf";          // Sync to font saved in settings (TO-DO)
@@ -91,6 +122,20 @@ public class TranslateFragment extends Fragment {
         trackDown = (Button) v.findViewById(R.id.btn_down);
         playAll = (Button) v.findViewById(R.id.btn_play_all);
         saveText = (Button) v.findViewById(R.id.btn_save_text);
+        back = (Button) v.findViewById(R.id.btn_back_translation);
+        exitFolderContainer = v.findViewById(R.id.exit_folder_container);
+        addFolderContainer = v.findViewById(R.id.add_folder_container);
+
+        // Sync Folder List
+        folderContainer = v.findViewById(R.id.folder_container);
+        folderListView = v.findViewById(R.id.folder_container_list);
+        File[] folders = GalleryFragment.galleryFolders(context);
+        String[] folderNames = GalleryFragment.galleryFolderNames(context);
+        folderList = new ArrayList<>(Arrays.asList(folders));
+        folderNameList = new ArrayList<>(Arrays.asList(folderNames));
+        folderListAdapter = new FolderListAdapter(getActivity().getApplicationContext(), folderList, folderNameList, getActivity());
+        folderListView.setAdapter(folderListAdapter);
+
         activateListeners();        // Activate Button listeners
 
 
@@ -110,8 +155,6 @@ public class TranslateFragment extends Fragment {
 
 
     /*-------------------------------- FUNCTIONS --------------------------------*/
-
-
     // Activates all Button listeners
     public void activateListeners() {
 
@@ -139,14 +182,45 @@ public class TranslateFragment extends Fragment {
             }
         });
 
-        // 4. Save text file (TO-DO)
+        // 4. Save text file
         saveText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // to do
+                slideUp(folderContainer);
             }
         });
 
+        // 5. Select Folder to save
+        folderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                promptTitleName(context, folderNameList.get(position));
+            }
+        });
+
+        // 6. Exit saving text
+        exitFolderContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slideDown(folderContainer);
+            }
+        });
+
+        // 7. Add new folder when saving text
+        addFolderContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptFolderName();
+            }
+        });
+
+        // 8. Back to previous page
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
     }
 
 
@@ -275,11 +349,136 @@ public class TranslateFragment extends Fragment {
 
     /*-------------------- SAVING FILES --------------------*/
 
-    // Saves a text to a new / existing folder
-    public void saveText(View v) {
+    // slide the view from below itself to the current position
+    public void slideUp(View view){
+        view.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight(),  // fromYDelta
+                0);                // toYDelta
+        animate.setDuration(300);
+        animate.setFillAfter(true);
+        view.startAnimation(animate);
+        folderContainerUp = true;
+    }
 
-        // to-do
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                0,                 // fromYDelta
+                view.getHeight()); // toYDelta
+        animate.setDuration(300);
+        animate.setFillAfter(true);
+        view.startAnimation(animate);
+        folderContainerUp = false;
+    }
 
+    // Build dialog to ask for title name
+    public void promptTitleName(final Context ctx, final String folderName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Title name");
+        builder.setMessage("Please name your new document");
+
+        // Set up the input
+        final EditText inputText = new EditText(context);
+        // Specify the type of input expected
+        inputText.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(inputText);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String title = inputText.getText().toString();
+                saveFile(ctx, folderName, input, title);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    // Save file to the folder name
+    private void saveFile(Context ctx, String folderName, String data, String title) {
+        File folder = FileListFragment.getFolder(ctx, folderName);
+        File file = new File(folder, title);
+        data = title + "\n" + data;
+        int i = 0;
+        while (file.exists()) {
+            title = title + "_" + i;
+            file = new File(folder, title);
+            i++;
+        }
+
+        FileOutputStream outstream;
+
+        try{
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            outstream = new FileOutputStream(file);
+            outstream.write(data.getBytes());
+            outstream.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        slideDown(folderContainer);
+        Toast.makeText(getActivity().getApplicationContext(), "Saved file " + title + " in " + folderName,
+                Toast.LENGTH_SHORT).show();
+    }
+
+    // Build dialog to ask for new folder name
+    public void promptFolderName() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Folder name");
+
+        // Set up the input
+        final EditText input = new EditText(context);
+        // Specify the type of input expected
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String folderName = input.getText().toString();
+                createFolderInTranslate(folderName);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    public void createFolderInTranslate(String folderName) {
+        File file = GalleryFragment.createFolder(context, folderName);
+        if (file != null) {
+            folderNameList.add(folderNameList.size(),folderName);
+            folderList.add(folderList.size(),file);
+            folderListAdapter.notifyDataSetChanged();
+
+            Toast.makeText(getActivity().getApplicationContext(), "Created folder " + folderName,
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), "Unable to create folder " + folderName,
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
 
