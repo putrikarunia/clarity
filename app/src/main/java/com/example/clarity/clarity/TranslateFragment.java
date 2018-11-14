@@ -48,6 +48,8 @@ public class TranslateFragment extends Fragment {
 
     // Word-selection variables
     private String selectedWord = "";     // Selected word
+    private String syllable = "";
+    private Button playWord;
 
     // Text-to-Speech variables
     private Button playAll;
@@ -70,39 +72,48 @@ public class TranslateFragment extends Fragment {
         input = getArguments().getString("input");
 
 
-        // Update font to OpenDyslexic
+        // Update Translation TextView settings
+        String selectedFont = "fonts/OpenDyslexic-Regular.otf";          // Sync to font saved in settings (TO-DO)
         translation = (TextView) v.findViewById(R.id.text_translation);
-        Typeface font = Typeface.createFromAsset(context.getAssets(),  "fonts/OpenDyslexic-Regular.otf");
-        translation.setTypeface(font);
-
-        // Update TextView to input
-        translation.setText(input);
-        //numOfLines = translation.getLineCount() + 1; // set number of lines for tracker's bounds
-
-        translation.post(new Runnable() {
+        translation.setTypeface(Typeface.createFromAsset
+                (context.getAssets(), selectedFont));
+        translation.setText(input);                     // Store input in TextView
+        translation.post(new Runnable() {               // Retrieve & set num of lines in TV; Tracker's bounds
             @Override
             public void run() {
                 numOfLines = translation.getLineCount();
             }
         });
 
-        // Tracks word selection
-        trackWordSelection();
 
-
-        // Enable highlighter settings
-        highlighter = (ImageView) v.findViewById(R.id.highlighter);
-        shift = dpToPx(25); // Change this depending on size of font
-
-
-        // Sync buttons
+        // Sync Buttons
         trackUp = (Button) v.findViewById(R.id.btn_up);
         trackDown = (Button) v.findViewById(R.id.btn_down);
         playAll = (Button) v.findViewById(R.id.btn_play_all);
         saveText = (Button) v.findViewById(R.id.btn_save_text);
+        activateListeners();        // Activate Button listeners
 
 
-        /*-------------------------------- BUTTON LISTENERS --------------------------------*/
+        // Enable Tracker highlight settings
+        highlighter = (ImageView) v.findViewById(R.id.highlighter);
+        shift = dpToPx(25);         // Change this depending on size of font (TO-DO)
+
+
+        // Word Selection Settings
+        trackWordSelection();       // Tracks word selection (highlights word when selected)
+
+
+        return v;
+
+
+    }
+
+
+    /*-------------------------------- FUNCTIONS --------------------------------*/
+
+
+    // Activates all Button listeners
+    public void activateListeners() {
 
         // 1. Tracker: Up
         trackUp.setOnClickListener(new View.OnClickListener() {
@@ -136,13 +147,7 @@ public class TranslateFragment extends Fragment {
             }
         });
 
-
-        return v;
-
     }
-
-
-    /*-------------------------------- FUNCTIONS --------------------------------*/
 
 
     // Controls Tracker -- valid parameter is either "up" or "down"
@@ -170,7 +175,10 @@ public class TranslateFragment extends Fragment {
     }
 
 
-    // Text-to-speech -- takes in a TextView and converts to speech
+    /*-------------------- TEXT-TO-SPEECH --------------------*/
+
+
+    // Takes in a TextView and converts it to audio
     @SuppressLint("NewApi")
     private void speakOut(TextView input) {
 
@@ -194,6 +202,7 @@ public class TranslateFragment extends Fragment {
 
     }
 
+    // Destroys TTS
     @Override
     public void onDestroy() {
         // Don't forget to shutdown tts!
@@ -205,13 +214,7 @@ public class TranslateFragment extends Fragment {
     }
 
 
-    // Saves a text to a new / existing folder
-    public void saveText(View v) {
-
-        // to-do
-
-    }
-
+    /*-------------------- WORD SELECTION --------------------*/
 
     // Tracks word selection
     private void trackWordSelection() {
@@ -270,8 +273,18 @@ public class TranslateFragment extends Fragment {
     }
 
 
+    /*-------------------- SAVING FILES --------------------*/
 
-    // Helper functions
+    // Saves a text to a new / existing folder
+    public void saveText(View v) {
+
+        // to-do
+
+    }
+
+
+    /*-------------------- HELPERS --------------------*/
+
     public static int dpToPx(int dp)
     {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
