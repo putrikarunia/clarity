@@ -86,11 +86,12 @@ public class FileListFragment extends Fragment {
             listView = v.findViewById(R.id.file_list_view);
             FileListAdapter fileListAdapter = new FileListAdapter(context, titleList, subTitleList);
             listView.setAdapter(fileListAdapter);
-            activateListeners();
+            activateNonEmptyListeners();
         } else {
             emptyImage.setVisibility(View.VISIBLE);
             empty = true;
         }
+        activateListeners();
         return v;
     }
 
@@ -117,7 +118,7 @@ public class FileListFragment extends Fragment {
     /*-------------------------------- FUNCTIONS --------------------------------*/
     // apply listeners
     // Activates all Button listeners
-    public void activateListeners() {
+    public void activateNonEmptyListeners() {
         // 1. Open clicked folder
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -127,8 +128,10 @@ public class FileListFragment extends Fragment {
                 // Prepares for next fragment
                 Fragment newFragment = new TranslateFragment();
                 Bundle args = new Bundle();                             // Use bundle to send info from fragment to fragment
-                args.putString("input", titleAndText.second);    // Store user input into bundle
-                args.putString("title", titleAndText.first);    // No title
+                args.putString("input", titleAndText.second);           // Store user input into bundle
+                args.putString("title", titleAndText.first);            // store title if applicable
+                args.putString("folderName", folderName);               // Store folder name if applicable
+                args.putString("fileName", fileNameList[position]);     // Store file name if applicable
                 newFragment.setArguments(args);                         // Set next fragment's args to bundle
 
                 // Switch fragment views
@@ -139,8 +142,9 @@ public class FileListFragment extends Fragment {
 
             }
         });
-
-        // 2. Back to previous page
+    }
+    public void activateListeners() {
+        // 1. Back to previous page
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

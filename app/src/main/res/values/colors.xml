@@ -11,4 +11,5 @@
     <color name="defaultText">#3F3F3D</color>
     <color name="defaultTextTransparent">#823F3F3D</color>
     <color name="defaultHighlight">#fbdda1</color>
+    <color name="backgroundTransparent">#1E3F3F3D</color>
 </resources>
