@@ -75,11 +75,17 @@ public class TranslateFragment extends Fragment {
     private ImageButton exitFolderContainer;
     private ImageButton addFolderContainer;
     private RelativeLayout folderContainer;
-    private boolean folderContainerUp = false;
+    private ImageView shadowView;
     FolderListAdapter folderListAdapter;
     private ListView folderListView;
     List<File> folderList = new ArrayList<>();
     List<String> folderNameList = new ArrayList<>();
+
+    // Delete file variables
+    private String folderName = "";            // Stores title if applicable (from saved file)
+    private String fileName = "";
+    private Button deleteFile;
+    private boolean newText = true;              // If new text, can save, otherwise can delete
 
     // Back button
     private Button back;
@@ -101,7 +107,12 @@ public class TranslateFragment extends Fragment {
         title = getArguments().getString("title");
         if (!title.equals("")) {
             translationTitle.setText(title);
+            newText = false;
         }
+
+        // Set folder name and file name if applicable
+        folderName = getArguments().getString("folderName");
+        fileName = getArguments().getString("fileName");
 
         // Update Translation TextView settings
         String selectedFont = "fonts/OpenDyslexic-Regular.otf";          // Sync to font saved in settings (TO-DO)
@@ -122,11 +133,22 @@ public class TranslateFragment extends Fragment {
         trackDown = (Button) v.findViewById(R.id.btn_down);
         playAll = (Button) v.findViewById(R.id.btn_play_all);
         saveText = (Button) v.findViewById(R.id.btn_save_text);
+        deleteFile = (Button) v.findViewById(R.id.btn_delete_file);
         back = (Button) v.findViewById(R.id.btn_back_translation);
         exitFolderContainer = v.findViewById(R.id.exit_folder_container);
         addFolderContainer = v.findViewById(R.id.add_folder_container);
 
+        // Sync button save or delete
+        if (newText) {
+            saveText.setVisibility(View.VISIBLE);
+            deleteFile.setVisibility(View.GONE);
+        } else {
+            saveText.setVisibility(View.GONE);
+            deleteFile.setVisibility(View.VISIBLE);
+        }
+
         // Sync Folder List
+        shadowView = v.findViewById(R.id.save_shadow_view);
         folderContainer = v.findViewById(R.id.folder_container);
         folderListView = v.findViewById(R.id.folder_container_list);
         File[] folders = GalleryFragment.galleryFolders(context);
@@ -194,12 +216,18 @@ public class TranslateFragment extends Fragment {
         folderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                promptTitleName(context, folderNameList.get(position));
+                promptTitleName(folderNameList.get(position));
             }
         });
 
         // 6. Exit saving text
         exitFolderContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slideDown(folderContainer);
+            }
+        });
+        shadowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 slideDown(folderContainer);
@@ -219,6 +247,15 @@ public class TranslateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().popBackStack();
+            }
+        });
+
+
+        // 9. delete text file
+        deleteFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDeleteFile(folderName, fileName);
             }
         });
     }
@@ -352,32 +389,33 @@ public class TranslateFragment extends Fragment {
     // slide the view from below itself to the current position
     public void slideUp(View view){
         view.setVisibility(View.VISIBLE);
+        shadowView.setVisibility(View.VISIBLE);
         TranslateAnimation animate = new TranslateAnimation(
                 0,                 // fromXDelta
                 0,                 // toXDelta
                 view.getHeight(),  // fromYDelta
                 0);                // toYDelta
         animate.setDuration(300);
-        animate.setFillAfter(true);
+        animate.setFillAfter(false);
         view.startAnimation(animate);
-        folderContainerUp = true;
     }
 
     // slide the view from its current position to below itself
     public void slideDown(View view){
+        shadowView.setVisibility(View.GONE);
         TranslateAnimation animate = new TranslateAnimation(
                 0,                 // fromXDelta
                 0,                 // toXDelta
                 0,                 // fromYDelta
                 view.getHeight()); // toYDelta
         animate.setDuration(300);
-        animate.setFillAfter(true);
+        animate.setFillAfter(false);
         view.startAnimation(animate);
-        folderContainerUp = false;
+        view.setVisibility(View.GONE);
     }
 
     // Build dialog to ask for title name
-    public void promptTitleName(final Context ctx, final String folderName) {
+    public void promptTitleName(final String folderName) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Title name");
         builder.setMessage("Please name your new document");
@@ -393,7 +431,7 @@ public class TranslateFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String title = inputText.getText().toString();
-                saveFile(ctx, folderName, input, title);
+                saveFile(context, folderName, input, title);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -410,11 +448,12 @@ public class TranslateFragment extends Fragment {
     private void saveFile(Context ctx, String folderName, String data, String title) {
         File folder = FileListFragment.getFolder(ctx, folderName);
         File file = new File(folder, title);
+        String fileName = title;
         data = title + "\n" + data;
         int i = 0;
         while (file.exists()) {
-            title = title + "_" + i;
-            file = new File(folder, title);
+            fileName = fileName + "_" + i;
+            file = new File(folder, fileName);
             i++;
         }
 
@@ -433,6 +472,22 @@ public class TranslateFragment extends Fragment {
         }
 
         slideDown(folderContainer);
+        // update folder list
+        folderListAdapter.notifyDataSetChanged();
+
+        // set title
+        this.title = title;
+        translationTitle.setText(title);
+
+        // change save icon to delete icon
+        newText = false;
+        saveText.setVisibility(View.GONE);
+        deleteFile.setVisibility(View.VISIBLE);
+
+        // update folder name and file name
+        this.folderName = folderName;
+        this.fileName = fileName;
+
         Toast.makeText(getActivity().getApplicationContext(), "Saved file " + title + " in " + folderName,
                 Toast.LENGTH_SHORT).show();
     }
@@ -481,6 +536,49 @@ public class TranslateFragment extends Fragment {
         }
     }
 
+    // DELETE FILE
+    // Build dialog to confirm file delete
+    public void confirmDeleteFile(final String folderName, final String fileName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Delete File");
+        builder.setMessage("Are you sure you want to delete this file?");
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (deleteTextFile(folderName, fileName)) {
+                    Toast.makeText(context, "Deleted file " + fileName,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Unable to delete file " + fileName,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+
+    // Delete file
+    public boolean deleteTextFile(String folderName, String fileName) {
+        if (folderName.equals("") || fileName.equals("")) return false;
+        File galleryFolder = GalleryFragment.getGalleryFolder(context);
+        File folder = new File(galleryFolder, folderName);
+        if (!folder.exists()) return false;
+        File file = new File(folder, fileName);
+        if (file.exists() && file.delete()) {
+            getFragmentManager().popBackStack();
+            getFragmentManager().popBackStack();
+            return true;
+        }
+        return false;
+    }
 
     /*-------------------- HELPERS --------------------*/
 
@@ -493,5 +591,4 @@ public class TranslateFragment extends Fragment {
     {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);
     }
-
 }

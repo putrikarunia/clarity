@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_file_list"
     tools:context=".FileListFragment"
-    android:background="@color/defaultBackground">
+    android:background="@color/defaultBackground"
+    android:clickable="true">
 
     <RelativeLayout
         android:layout_width="match_parent"

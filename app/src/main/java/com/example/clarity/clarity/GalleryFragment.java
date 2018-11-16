@@ -9,11 +9,14 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -38,9 +41,17 @@ public class GalleryFragment extends Fragment {
     // Gallery views
     ImageView emptyImage;
     GridView gridview;
+    ImageView shadowView;
+    RelativeLayout optionsContainer;
+    TextView optionsContainerHeader;
 
     // Buttons
     ImageButton createFolder;
+    ImageButton exitOptionsContainer;
+    RelativeLayout deleteButton;
+    RelativeLayout renameButton;
+    Boolean deleteContainerUp = false;
+    String currentFolder = null;
 
 
     @Override
@@ -65,6 +76,14 @@ public class GalleryFragment extends Fragment {
 
         // Handle "create folder" button
         createFolder = v.findViewById(R.id.create_folder);
+
+        // Options for delete and rename
+        optionsContainer = v.findViewById(R.id.options_container);
+        shadowView = v.findViewById(R.id.options_shadow_view);
+        deleteButton = v.findViewById(R.id.options_container_delete);
+        renameButton = v.findViewById(R.id.options_container_rename);
+        optionsContainerHeader = v.findViewById(R.id.options_container_header);
+        exitOptionsContainer = v.findViewById(R.id.exit_options_container);
 
         // Setup gridview for folders
         gridview = v.findViewById(R.id.gridview);
@@ -135,6 +154,59 @@ public class GalleryFragment extends Fragment {
             }
         });
 
+        // 3. Show folder options
+        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                currentFolder = nameList.get(pos);
+                optionsContainerHeader.setText(currentFolder);
+                slideUp(optionsContainer);
+                return true;
+            }
+        });
+
+        // 4. Hide optoins container
+        exitOptionsContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slideDown(optionsContainer);
+                currentFolder = null;
+            }
+        });
+        shadowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slideDown(optionsContainer);
+                currentFolder = null;
+            }
+        });
+
+        // 5. Show confirmation to delete folder
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentFolder != null) {
+                    confirmDeleteFolder(currentFolder);
+                } else {
+                    Toast.makeText(context, "Unable to delete folder",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // 6. Show dialog to rename folder
+        renameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentFolder != null) {
+                    promptRenameFolder(currentFolder);
+                } else {
+                    Toast.makeText(context, "Unable to rename folder",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     // CREATE FOLDER
@@ -204,12 +276,147 @@ public class GalleryFragment extends Fragment {
         return null;
     }
 
-    // DELETE ALL FOLDERS
-    // JUST FOR DEVELOPMENT!!
-    public void emptyAll(String[] galleryNames) {
-        for (int i=0; i<galleryNames.length; i++) {
-            File myFile = new File(galleryFolder, galleryNames[i]);
-            myFile.delete();
+
+    // DELETE FOLDER
+    // slide the view from below itself to the current position
+    public void slideUp(View view){
+        shadowView.setVisibility(View.VISIBLE);
+        view.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight(),  // fromYDelta
+                0);                // toYDelta
+        animate.setDuration(200);
+        animate.setFillAfter(false);
+        view.startAnimation(animate);
+        deleteContainerUp = true;
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        shadowView.setVisibility(View.GONE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                0,                 // fromYDelta
+                view.getHeight()); // toYDelta
+        animate.setDuration(200);
+        animate.setFillAfter(false);
+        view.startAnimation(animate);
+        optionsContainer.setVisibility(View.GONE);
+        deleteContainerUp = false;
+    }
+
+
+    // Build dialog to confirm folder delete
+    public void confirmDeleteFolder(final String folderName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Delete Folder");
+        builder.setMessage("Are you sure you want to delete folder " + folderName + " and all it's contents?");
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (deleteFolder(folderName)) {
+                    slideDown(optionsContainer);
+                    Toast.makeText(context, "Deleted folder " + folderName,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Unable to delete folder " + folderName,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+
+    // Delete folder
+    public boolean deleteFolder(String folderName) {
+        File galleryFolder = GalleryFragment.getGalleryFolder(context);
+        File folder = new File(galleryFolder, folderName);
+        if (folder.isDirectory())
+        {
+            // Delete all files in folder
+            String[] children = folder.list();
+            for (int i = 0; i < children.length; i++)
+            {
+                File file = new File(folder, children[i]);
+                if (!file.delete()) {
+                    return false;
+                }
+            }
+            // Delete folder and update list
+            if (contentList.indexOf(folder) == nameList.indexOf(folderName) && folder.delete()) {
+                contentList.remove(folder);
+                nameList.remove(folderName);
+                galleryAdapter.notifyDataSetChanged();
+                return true;
+            }
         }
+        return false;
+    }
+
+    // Build dialog to ask rename folder
+    public void promptRenameFolder(final String folderName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Rename File");
+
+        // Set up the input
+        final EditText input = new EditText(context);
+        // Specify the type of input expected
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String newName = input.getText().toString();
+                if (renameFolder(folderName, newName)) {
+                    slideDown(optionsContainer);
+                    Toast.makeText(context, "Renamed folder " + folderName + " to " + newName,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Unable to rename folder " + folderName,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+
+    // Delete folder
+    public boolean renameFolder(String folderName, String newName) {
+        File galleryFolder = GalleryFragment.getGalleryFolder(context);
+        File oldFile = new File(galleryFolder, folderName);
+        File newFile = new File(galleryFolder, newName);
+        if (oldFile.exists()) {
+            // update list
+            if (contentList.indexOf(oldFile) == nameList.indexOf(folderName) && oldFile.renameTo(newFile)) {
+                int index = nameList.indexOf(folderName);
+                contentList.remove(oldFile);
+                nameList.remove(folderName);
+                contentList.add(index, newFile);
+                nameList.add(index, newName);
+                galleryAdapter.notifyDataSetChanged();
+                return true;
+            }
+
+        }
+        return false;
     }
 }

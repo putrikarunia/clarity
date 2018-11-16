@@ -12,14 +12,16 @@ import java.io.File;
 import java.util.List;
 
 public class GalleryAdapter extends BaseAdapter {
-    private Context mContext;
+    private Context context;
     private List<File> content;
     private List<String> names;
     LayoutInflater inflter;
     Activity activity;
 
+    TextView folderName;
+
     public GalleryAdapter(Context c, List<File> galleryContent, List<String> galleryNames, Activity activity) {
-        mContext = c;
+        context = c;
         content = galleryContent;
         names = galleryNames;
         this.activity = activity;
@@ -41,10 +43,8 @@ public class GalleryAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflter.inflate(R.layout.gallery_folder_list, null);
-        TextView folderName = convertView.findViewById(R.id.folder_name);
+        folderName = convertView.findViewById(R.id.folder_name);
         folderName.setText(names.get(position));
         return convertView;
     }
-
-
 }
