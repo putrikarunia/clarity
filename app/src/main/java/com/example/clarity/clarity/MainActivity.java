@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new AddFragment();
                         break;
                     case R.id.action_settings:
-                        fragment = new AddFragment();
+                        fragment = new SettingsFragment();
                         break;
                 }
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
