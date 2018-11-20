@@ -64,7 +64,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="475dp"
             android:layout_above="@+id/paste_input_count"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -72,13 +72,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/text_translation"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
+                    android:layout_height="475dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:textColorLink="@color/colorAccent"
