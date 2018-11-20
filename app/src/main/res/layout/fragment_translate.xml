@@ -27,6 +27,15 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/save_text_button"
             android:gravity="right" />
+
+        <Button
+            android:id="@+id/btn_delete_file"
+            android:layout_width="80dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/delete_file"
+            android:gravity="right"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 
@@ -123,6 +132,14 @@
             android:background="@drawable/audio_whole_text" />
 
     </LinearLayout>
+    <ImageView
+        android:id="@+id/save_shadow_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:translationZ="1dp"
+        android:background="@color/backgroundTransparent"
+        android:visibility="gone"
+        />
 
     <RelativeLayout
         android:id="@+id/folder_container"
@@ -133,7 +150,7 @@
         android:background="#FFFFFF"
         android:elevation="20dp"
         android:translationZ="20dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:padding="25dp">
     
         <ImageButton
