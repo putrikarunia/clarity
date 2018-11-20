@@ -1,0 +1,350 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+MERGED from [com.android.support:design:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/b5a1ef32b2801760464335a93310b0a2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/9ff1089bb9bc917fa6c4d5684231e068/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/6bdc0d9be0f3a2ba87d774f5cbfd4a8e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/9851953974c3725d199f4fb3d0ccb3d8/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/6ece2710ba44e69e50ee8872cc09d371/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/bc741c915cff90abb9e205e50e815470/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/71eea87ae3035821332292d54a4a2e26/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/ef7035814f989a3df85ba22a2ac55e4d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/82e8dd4f41cc159aa751e51caf993724/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/6377affa14dee42ef9f441722abe537a/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/2e7ddaf7342049f4b3d9950c2ba615cc/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/3c23744b3111612ede5c5784e694798b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/82446ec28bdc3ad56b06adf652cfe9c6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/2a52aed874be51360d32a8211beba0c1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/38ffa854088348958446bc3aeececcde/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/91bc04c413944fdb7c6199925dd55a6d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/81495b3f1d379cee76042d455d741350/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/390381baa2c8558d9104b6a4f4fd0305/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/99099040e40f50611aa29b9ed5f53e42/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/af7a101aa37405deef9bbcb039070f04/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/556fcd6ac5fe8c1cc61bdf8e4ee48550/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/0d3c5d7c1d2cdacd362cd96ae5738986/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/d8c3b0f1bb13aa300d4325f7e577b17a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha1.aar/b9bbd4592c3fdb653d1ee60fe3ecd772/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha1.aar/604e8b8a9ec4f8f0116248c3c122575c/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/1a6d4904d09b9b856d2aebecf0bab435/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/8b31c4ad73fb9d441bce38d7467f75af/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/ef6699edada4d02cb0eabad9e754bca6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/d1bd6d8989f59dda94ac4a373e35cb0c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/09634cfc144c7ce4b27b263034b6ece6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/807262eee0d53a6bd51419fc3d0d7a56/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/497b7d1b41e9fdf477f6b1e3add7bf7b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/efaeef3f95df3c060270c11da7e1adc2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/3d05239d4913c0daf3368e0de5edb618/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/da89d5312434011bfe37918b8d69b5f2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/c9b6bbb2304a908f0220e271827bcfc0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/deada2c32cbd41220ff68e96d6156cfc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/17d8d3ac7c0952fe02c0727ac3af3842/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/92323bd58ee9ce33bc860794ed01881e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/791f47a3fe60fc80f2eba53b392ee763/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/67323a5b7701f172da6266457cac3d8e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/a364e67670109b94aea3c57a9d9bf725/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/d767d25d36e42e23c1f2f99803ea0d87/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/aa90a492b6f4437650740012769db5af/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/f347cbb9126d7a329d222d6a184253fe/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/2b3e687cb769d0d022ff49f730fb8a4a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/abae32ebc5e66471972640d5fb86271b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c9265bc4492ad13986e9772aaf5b67b2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d1047f4e47bae8a5423bccd6c1c9fbf8/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha1.aar/28ca7c69083d9cf9bcf09f496dd4200a/AndroidManifest.xml:17:1-23:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/2fef16ab4b6b8e6901f1010f1de4e56e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/b79973aa49855301d7ab2071b5b791b5/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/9a8a2be66a4e3d6b2825dd7ef3a2bc0e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/004e5e388654c8ccdcd9012a0240d19b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/5598d74e6a27870a67ed16ec4a5959ef/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/c520b83498592cab0e8adcd9b9e7d52e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/f57c96995141f730f99206bf776426f5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/cefc0a722332768400e1bdf86cd4f61c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/368d4f43063d9f98a53cbd5586f99dcf/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/d6dcd0c3673714f02d433f9ec46e72f1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7fe12f117ae643d93616b6d8aa6a9260/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/6cf05f21c5a2b2531ab6c9b9ebd41e3e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/bffea4719bb60b03cd7f0598f6736b8e/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+	package
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:3:5-42
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:5:5-28:19
+MERGED from [com.android.support:design:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/b5a1ef32b2801760464335a93310b0a2/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/b5a1ef32b2801760464335a93310b0a2/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/9ff1089bb9bc917fa6c4d5684231e068/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/9ff1089bb9bc917fa6c4d5684231e068/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/6bdc0d9be0f3a2ba87d774f5cbfd4a8e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/6bdc0d9be0f3a2ba87d774f5cbfd4a8e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/9851953974c3725d199f4fb3d0ccb3d8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/9851953974c3725d199f4fb3d0ccb3d8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/6ece2710ba44e69e50ee8872cc09d371/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/6ece2710ba44e69e50ee8872cc09d371/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/bc741c915cff90abb9e205e50e815470/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/bc741c915cff90abb9e205e50e815470/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/71eea87ae3035821332292d54a4a2e26/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/71eea87ae3035821332292d54a4a2e26/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/ef7035814f989a3df85ba22a2ac55e4d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/ef7035814f989a3df85ba22a2ac55e4d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/82e8dd4f41cc159aa751e51caf993724/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/82e8dd4f41cc159aa751e51caf993724/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/6377affa14dee42ef9f441722abe537a/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/6377affa14dee42ef9f441722abe537a/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/2e7ddaf7342049f4b3d9950c2ba615cc/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/2e7ddaf7342049f4b3d9950c2ba615cc/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/3c23744b3111612ede5c5784e694798b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/3c23744b3111612ede5c5784e694798b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/82446ec28bdc3ad56b06adf652cfe9c6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/82446ec28bdc3ad56b06adf652cfe9c6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/2a52aed874be51360d32a8211beba0c1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/2a52aed874be51360d32a8211beba0c1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/38ffa854088348958446bc3aeececcde/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/38ffa854088348958446bc3aeececcde/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/91bc04c413944fdb7c6199925dd55a6d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/91bc04c413944fdb7c6199925dd55a6d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/81495b3f1d379cee76042d455d741350/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/81495b3f1d379cee76042d455d741350/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/390381baa2c8558d9104b6a4f4fd0305/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/390381baa2c8558d9104b6a4f4fd0305/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/99099040e40f50611aa29b9ed5f53e42/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/99099040e40f50611aa29b9ed5f53e42/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/556fcd6ac5fe8c1cc61bdf8e4ee48550/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/556fcd6ac5fe8c1cc61bdf8e4ee48550/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/1a6d4904d09b9b856d2aebecf0bab435/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/1a6d4904d09b9b856d2aebecf0bab435/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/8b31c4ad73fb9d441bce38d7467f75af/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/8b31c4ad73fb9d441bce38d7467f75af/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/ef6699edada4d02cb0eabad9e754bca6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/ef6699edada4d02cb0eabad9e754bca6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/d1bd6d8989f59dda94ac4a373e35cb0c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/d1bd6d8989f59dda94ac4a373e35cb0c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/09634cfc144c7ce4b27b263034b6ece6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/09634cfc144c7ce4b27b263034b6ece6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/807262eee0d53a6bd51419fc3d0d7a56/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/807262eee0d53a6bd51419fc3d0d7a56/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/497b7d1b41e9fdf477f6b1e3add7bf7b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/497b7d1b41e9fdf477f6b1e3add7bf7b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/efaeef3f95df3c060270c11da7e1adc2/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/efaeef3f95df3c060270c11da7e1adc2/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/3d05239d4913c0daf3368e0de5edb618/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/3d05239d4913c0daf3368e0de5edb618/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c9265bc4492ad13986e9772aaf5b67b2/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c9265bc4492ad13986e9772aaf5b67b2/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d1047f4e47bae8a5423bccd6c1c9fbf8/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d1047f4e47bae8a5423bccd6c1c9fbf8/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7fe12f117ae643d93616b6d8aa6a9260/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7fe12f117ae643d93616b6d8aa6a9260/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/6cf05f21c5a2b2531ab6c9b9ebd41e3e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/6cf05f21c5a2b2531ab6c9b9ebd41e3e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/bffea4719bb60b03cd7f0598f6736b8e/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/bffea4719bb60b03cd7f0598f6736b8e/AndroidManifest.xml:22:5-20
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c9265bc4492ad13986e9772aaf5b67b2/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.example.clarity.clarity.SplashActivity
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:12:9-20:20
+	android:theme
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:14:13-47
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:13:13-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:18:27-74
+activity#com.example.clarity.clarity.MainActivity
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:21:9-50
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:21:19-47
+activity#com.example.clarity.clarity.FileListFragment
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:22:9-54
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:22:19-51
+activity#com.example.clarity.clarity.PasteText
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:23:9-26:47
+	android:label
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:25:13-62
+	android:theme
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:26:13-44
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:24:13-38
+activity#com.example.clarity.clarity.TranslateText
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:27:9-60
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:27:19-48
+uses-permission#android.permission.CAMERA
+ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:30:5-82
+	android:name
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml:30:22-62
+uses-sdk
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/b5a1ef32b2801760464335a93310b0a2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/b5a1ef32b2801760464335a93310b0a2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/9ff1089bb9bc917fa6c4d5684231e068/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/9ff1089bb9bc917fa6c4d5684231e068/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/6bdc0d9be0f3a2ba87d774f5cbfd4a8e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/6bdc0d9be0f3a2ba87d774f5cbfd4a8e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/9851953974c3725d199f4fb3d0ccb3d8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/9851953974c3725d199f4fb3d0ccb3d8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/6ece2710ba44e69e50ee8872cc09d371/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/6ece2710ba44e69e50ee8872cc09d371/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/bc741c915cff90abb9e205e50e815470/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/bc741c915cff90abb9e205e50e815470/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/71eea87ae3035821332292d54a4a2e26/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/71eea87ae3035821332292d54a4a2e26/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/ef7035814f989a3df85ba22a2ac55e4d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/ef7035814f989a3df85ba22a2ac55e4d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/82e8dd4f41cc159aa751e51caf993724/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/82e8dd4f41cc159aa751e51caf993724/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/6377affa14dee42ef9f441722abe537a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/6377affa14dee42ef9f441722abe537a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/2e7ddaf7342049f4b3d9950c2ba615cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/2e7ddaf7342049f4b3d9950c2ba615cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/3c23744b3111612ede5c5784e694798b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/3c23744b3111612ede5c5784e694798b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/82446ec28bdc3ad56b06adf652cfe9c6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/82446ec28bdc3ad56b06adf652cfe9c6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/2a52aed874be51360d32a8211beba0c1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/2a52aed874be51360d32a8211beba0c1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/38ffa854088348958446bc3aeececcde/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/38ffa854088348958446bc3aeececcde/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/91bc04c413944fdb7c6199925dd55a6d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/91bc04c413944fdb7c6199925dd55a6d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/81495b3f1d379cee76042d455d741350/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/81495b3f1d379cee76042d455d741350/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/390381baa2c8558d9104b6a4f4fd0305/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/390381baa2c8558d9104b6a4f4fd0305/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/99099040e40f50611aa29b9ed5f53e42/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/99099040e40f50611aa29b9ed5f53e42/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/af7a101aa37405deef9bbcb039070f04/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/af7a101aa37405deef9bbcb039070f04/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/556fcd6ac5fe8c1cc61bdf8e4ee48550/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/556fcd6ac5fe8c1cc61bdf8e4ee48550/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/0d3c5d7c1d2cdacd362cd96ae5738986/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/0d3c5d7c1d2cdacd362cd96ae5738986/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/d8c3b0f1bb13aa300d4325f7e577b17a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/d8c3b0f1bb13aa300d4325f7e577b17a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha1.aar/b9bbd4592c3fdb653d1ee60fe3ecd772/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:transition:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha1.aar/b9bbd4592c3fdb653d1ee60fe3ecd772/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha1.aar/604e8b8a9ec4f8f0116248c3c122575c/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha1.aar/604e8b8a9ec4f8f0116248c3c122575c/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/1a6d4904d09b9b856d2aebecf0bab435/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/1a6d4904d09b9b856d2aebecf0bab435/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/8b31c4ad73fb9d441bce38d7467f75af/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/8b31c4ad73fb9d441bce38d7467f75af/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/ef6699edada4d02cb0eabad9e754bca6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/ef6699edada4d02cb0eabad9e754bca6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/d1bd6d8989f59dda94ac4a373e35cb0c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/d1bd6d8989f59dda94ac4a373e35cb0c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/09634cfc144c7ce4b27b263034b6ece6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/09634cfc144c7ce4b27b263034b6ece6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/807262eee0d53a6bd51419fc3d0d7a56/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/807262eee0d53a6bd51419fc3d0d7a56/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/497b7d1b41e9fdf477f6b1e3add7bf7b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/497b7d1b41e9fdf477f6b1e3add7bf7b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/efaeef3f95df3c060270c11da7e1adc2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/efaeef3f95df3c060270c11da7e1adc2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/3d05239d4913c0daf3368e0de5edb618/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/3d05239d4913c0daf3368e0de5edb618/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/da89d5312434011bfe37918b8d69b5f2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/da89d5312434011bfe37918b8d69b5f2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/c9b6bbb2304a908f0220e271827bcfc0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/c9b6bbb2304a908f0220e271827bcfc0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/deada2c32cbd41220ff68e96d6156cfc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/deada2c32cbd41220ff68e96d6156cfc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/17d8d3ac7c0952fe02c0727ac3af3842/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/17d8d3ac7c0952fe02c0727ac3af3842/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/92323bd58ee9ce33bc860794ed01881e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/92323bd58ee9ce33bc860794ed01881e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/791f47a3fe60fc80f2eba53b392ee763/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/791f47a3fe60fc80f2eba53b392ee763/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/67323a5b7701f172da6266457cac3d8e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/67323a5b7701f172da6266457cac3d8e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/a364e67670109b94aea3c57a9d9bf725/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/a364e67670109b94aea3c57a9d9bf725/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/d767d25d36e42e23c1f2f99803ea0d87/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/d767d25d36e42e23c1f2f99803ea0d87/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/aa90a492b6f4437650740012769db5af/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/aa90a492b6f4437650740012769db5af/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/f347cbb9126d7a329d222d6a184253fe/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/f347cbb9126d7a329d222d6a184253fe/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/2b3e687cb769d0d022ff49f730fb8a4a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/2b3e687cb769d0d022ff49f730fb8a4a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/abae32ebc5e66471972640d5fb86271b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/abae32ebc5e66471972640d5fb86271b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c9265bc4492ad13986e9772aaf5b67b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/c9265bc4492ad13986e9772aaf5b67b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d1047f4e47bae8a5423bccd6c1c9fbf8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/d1047f4e47bae8a5423bccd6c1c9fbf8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha1.aar/28ca7c69083d9cf9bcf09f496dd4200a/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha1.aar/28ca7c69083d9cf9bcf09f496dd4200a/AndroidManifest.xml:21:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/2fef16ab4b6b8e6901f1010f1de4e56e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/2fef16ab4b6b8e6901f1010f1de4e56e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/b79973aa49855301d7ab2071b5b791b5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/b79973aa49855301d7ab2071b5b791b5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/9a8a2be66a4e3d6b2825dd7ef3a2bc0e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/9a8a2be66a4e3d6b2825dd7ef3a2bc0e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/004e5e388654c8ccdcd9012a0240d19b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/004e5e388654c8ccdcd9012a0240d19b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/5598d74e6a27870a67ed16ec4a5959ef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/5598d74e6a27870a67ed16ec4a5959ef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/c520b83498592cab0e8adcd9b9e7d52e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/c520b83498592cab0e8adcd9b9e7d52e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/f57c96995141f730f99206bf776426f5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/f57c96995141f730f99206bf776426f5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/cefc0a722332768400e1bdf86cd4f61c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/cefc0a722332768400e1bdf86cd4f61c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/368d4f43063d9f98a53cbd5586f99dcf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/368d4f43063d9f98a53cbd5586f99dcf/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/d6dcd0c3673714f02d433f9ec46e72f1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/d6dcd0c3673714f02d433f9ec46e72f1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7fe12f117ae643d93616b6d8aa6a9260/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7fe12f117ae643d93616b6d8aa6a9260/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/6cf05f21c5a2b2531ab6c9b9ebd41e3e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/6cf05f21c5a2b2531ab6c9b9ebd41e3e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/bffea4719bb60b03cd7f0598f6736b8e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /Users/surelywang/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/bffea4719bb60b03cd7f0598f6736b8e/AndroidManifest.xml:20:5-44
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		ADDED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/AndroidManifest.xml
