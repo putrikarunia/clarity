@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -115,7 +116,9 @@ public class TranslateFragment extends Fragment {
         fileName = getArguments().getString("fileName");
 
         // Update Translation TextView settings
-        String selectedFont = "fonts/OpenDyslexic-Regular.otf";          // Sync to font saved in settings (TO-DO)
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String defaultValue = "fonts/OpenDyslexic-Regular.otf";
+        String selectedFont = sharedPref.getString(getString(R.string.font_pref_key), defaultValue);
         translation = (TextView) v.findViewById(R.id.text_translation);
         translation.setTypeface(Typeface.createFromAsset
                 (context.getAssets(), selectedFont));

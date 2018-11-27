@@ -12,4 +12,14 @@
     <color name="defaultTextTransparent">#823F3F3D</color>
     <color name="defaultHighlight">#fbdda1</color>
     <color name="backgroundTransparent">#1E3F3F3D</color>
+
+    <color name="settingsDivider">#0A000000</color>
+    <color name="settingsText">#6B6B6B</color>
+
+    <!--Highlight  color options-->
+    <color name="highlightBlue">#D2E9E9</color>
+    <color name="highlightYellow">#FAFAA1</color>
+    <color name="highlightOrange">#FCDDA1</color>
+    <color name="highlightGreen">#A5FAE3</color>
+    <color name="highlightRed">#FBA4A1</color>
 </resources>
