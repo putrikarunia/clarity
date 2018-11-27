@@ -174,19 +174,20 @@ public class SettingsFontFragment extends Fragment {
     private void updateCheckMark(int row) {
 
         // Converts dp into pixels and calculates offset of check mark
-        int top = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                66 + 49 * row,
-                getResources().getDisplayMetrics());
-        int right = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                8,
-                getResources().getDisplayMetrics());
+        int top = dpToPx(66 + 49 * row);
+        int right = dpToPx(8);
 
         // Updates position of check
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) checkmark.getLayoutParams();
         lp.setMargins(0, top, right, 0);
         checkmark.setLayoutParams(lp);
 
+    }
+
+    private int dpToPx(int dp) {
+        int px = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp, getResources().getDisplayMetrics());
+        return px;
     }
 }

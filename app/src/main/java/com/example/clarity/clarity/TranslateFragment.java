@@ -166,7 +166,8 @@ public class TranslateFragment extends Fragment {
 
         // Enable Tracker highlight settings
         highlighter = (ImageView) v.findViewById(R.id.highlighter);
-        shift = dpToPx(25);         // Change this depending on size of font (TO-DO)
+        shift = dpToPx(25);         // TODO Change this depending on size of font
+        // TODO Update height of highlighter depending on font size as well
 
 
         // Word Selection Settings
