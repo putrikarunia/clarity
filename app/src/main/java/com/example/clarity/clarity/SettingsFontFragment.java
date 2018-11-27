@@ -68,16 +68,16 @@ public class SettingsFontFragment extends Fragment {
             case "fonts/Courier-Regular.ttf":
                 updateCheckMark(1);
                 break;
-            case "fonts/Helvetica-Regular.otf":
+            case "fonts/Helvetica-Regular.ttf":
                 updateCheckMark(2);
                 break;
             case "fonts/OpenDyslexic-Regular.otf":
                 updateCheckMark(3);
                 break;
-            case "fonts/Roboto-Regular.otf":
+            case "fonts/Roboto-Regular.ttf":
                 updateCheckMark(4);
                 break;
-            case "fonts/Verdana-Regular.otf":
+            case "fonts/Verdana-Regular.ttf":
                 updateCheckMark(5);
                 break;
             default:
