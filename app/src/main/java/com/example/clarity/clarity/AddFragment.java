@@ -86,39 +86,26 @@ public class AddFragment extends Fragment implements View.OnClickListener {
             // 2. User selects to take a photo
             case R.id.use_cam:
                 showImageImportDialog();
-                translateText();
+                newFragment = new TranslateFragment();
+
+                Bundle args = new Bundle();                             // Use bundle to send info from fragment to fragment
+                args.putString("input", input);    // Store user input into bundle
+                newFragment.setArguments(args);                         // Set next fragment's args to bundle
+
                 break;
+
+            default:
+                break;
+
+
 
         }
 
         getFragmentManager().beginTransaction().replace(R.id.fragment_add, newFragment).commit();
-    }
 
-    // Takes user's input text and switches to Translate view
-    public void translateText() {
-
-        // Check if textbox is empty
-        if (input.matches("")) {
-
-            Toast.makeText(context, "Nothing", Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            // Prepares for next fragment
-            Fragment newFragment = new TranslateFragment();
-            Bundle args = new Bundle();                             // Use bundle to send info from fragment to fragment
-            args.putString("input", input);    // Store user input into bundle
-            args.putString("title", "");    // No title
-            newFragment.setArguments(args);                         // Set next fragment's args to bundle
-
-            // Switch fragment views
-            getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_paste, newFragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
 
     }
+
 
     private void showImageImportDialog(){
         String[] items = {" Camera", " Gallery"};

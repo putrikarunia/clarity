@@ -99,7 +99,7 @@ public class TranslateFragment extends Fragment {
         // Set title if applicable
         translationTitle = v.findViewById(R.id.translate_header);
         title = getArguments().getString("title");
-        if (!title.equals("")) {
+        if (title != null && !title.equals("")) {
             translationTitle.setText(title);
         }
 
