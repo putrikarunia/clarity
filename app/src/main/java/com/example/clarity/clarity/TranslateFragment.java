@@ -168,8 +168,7 @@ public class TranslateFragment extends Fragment {
         highlighter = (ImageView) v.findViewById(R.id.highlighter);
         shift = dpToPx(25);         // TODO Change this depending on size of font
         // TODO Update height of highlighter depending on font size as well
-        highlighter.setColorFilter(R.color.highlightBlue); // White Tint
-
+        // TODO Update color of highlighter according to settings
 
 
 

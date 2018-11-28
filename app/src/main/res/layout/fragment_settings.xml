@@ -37,6 +37,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/settingsDivider" />
+
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/highlightColorOption"
                     android:layout_width="match_parent"
@@ -60,48 +66,48 @@
 
                     <ImageView
                         android:id="@+id/yellowHighlight"
-                        android:tint="@color/highlightYellow"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:src="@drawable/color_circle"
+                        android:tint="@color/highlightYellow"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/blueHighlight"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/blueHighlight"
-                        android:tint="@color/highlightBlue"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:src="@drawable/color_circle"
+                        android:tint="@color/highlightBlue"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/greenHighlight"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/greenHighlight"
-                        android:tint="@color/highlightGreen"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:src="@drawable/color_circle"
+                        android:tint="@color/highlightGreen"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/redHighlight"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/redHighlight"
-                        android:tint="@color/highlightRed"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:src="@drawable/color_circle"
+                        android:tint="@color/highlightRed"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -118,13 +124,18 @@
                         app:layout_constraintEnd_toStartOf="@+id/yellowHighlight"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                </android.support.constraint.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/highlightCheck"
+                        android:layout_width="14dp"
+                        android:layout_height="10dp"
+                        android:src="@drawable/ic_check"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/orangeHighlight"
+                        app:layout_constraintStart_toStartOf="@+id/orangeHighlight"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.512" />
 
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/settingsDivider" />
+                </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/fontOption"
@@ -281,6 +292,18 @@
                         android:tint="@color/textNavy"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/grayText"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/textColorCheck"
+                        android:layout_width="14dp"
+                        android:layout_height="10dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/ic_check"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/navyText"
+                        app:layout_constraintStart_toStartOf="@+id/navyText"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
