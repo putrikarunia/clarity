@@ -67,7 +67,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/arialOption"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="52dp">
 
                     <TextView
                         android:id="@+id/arialText"
@@ -94,7 +94,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/courierOption"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="52dp">
 
                     <TextView
                         android:id="@+id/courierText"
@@ -121,7 +121,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/helveticaOption"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="52dp">
 
                     <TextView
                         android:id="@+id/helveticaText"
@@ -148,7 +148,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/openDyslexicOption"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="52dp">
 
                     <TextView
                         android:id="@+id/openDyslexicText"
@@ -175,7 +175,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/robotoOption"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="52dp">
 
                     <TextView
                         android:id="@+id/robotoText"
@@ -202,7 +202,7 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/verdanaOption"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp">
+                    android:layout_height="52dp">
 
                     <TextView
                         android:id="@+id/verdanaText"

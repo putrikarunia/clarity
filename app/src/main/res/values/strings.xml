@@ -19,12 +19,13 @@
     <string name="roboto">Roboto</string>
     <string name="verdana">Verdana</string>
 
-    <!--Default Preference Values-->
-    <string name="default_font">fonts/OpenDyslexic-Regular.otf</string>
-    <string name="default_highlight_color"></string>
-    <string name="default_text_size"></string>
-    <string name="default_text_color"></string>
-    <string name="default_line_spacing"></string>
+    <!--Preference Categories-->
+    <string name="font_pref">Font</string>
+    <string name="highlight_color_pref">Highlight Color</string>
+    <string name="text_size_pref">Text Size</string>
+    <string name="text_color_pref">Text Color</string>
+    <string name="line_spacing_pref">Line Spacing</string>
+    <string name="reset_settings">Reset Settings</string>
 
     <!--Bottom Nav-->
     <string name="bottom_nav_gallery">Gallery</string>

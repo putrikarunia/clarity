@@ -174,7 +174,7 @@ public class SettingsFontFragment extends Fragment {
     private void updateCheckMark(int row) {
 
         // Converts dp into pixels and calculates offset of check mark
-        int top = dpToPx(66 + 49 * row);
+        int top = dpToPx(66 + 53 * row);
         int right = dpToPx(8);
 
         // Updates position of check
