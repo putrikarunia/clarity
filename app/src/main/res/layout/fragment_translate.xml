@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="19dp"
             android:layout_marginTop="57dp"
-            app:srcCompat="@color/defaultHighlight" />
+            android:tint="@color/defaultHighlight" />
 
         <ScrollView
             android:layout_width="match_parent"

@@ -103,4 +103,10 @@ public class SettingsFragment extends Fragment {
                 break;
         }
     }
+
+    private void resetToDefaultSettings() {
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.putString(getString(R.string.font_pref_key), "fonts/OpenDyslexic-Regular.otf");
+        editor.apply();
+    }
 }

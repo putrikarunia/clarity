@@ -24,6 +24,8 @@ public class SettingsFontFragment extends Fragment {
     // Buttons
     private Button back;
 
+    private SharedPreferences sharedPrefs;
+
     private ImageView checkmark;
 
     private ConstraintLayout arialOption;
@@ -42,6 +44,9 @@ public class SettingsFontFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_settings_font, container, false);
         context = container.getContext();
 
+        // Get preference file
+        sharedPrefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+
         // Bind variables for UI elements
         arialOption = (ConstraintLayout) v.findViewById(R.id.arialOption);
         courierOption = (ConstraintLayout) v.findViewById(R.id.courierOption);
@@ -58,9 +63,8 @@ public class SettingsFontFragment extends Fragment {
 
 
         // Update the position of the selection check mark to the currently selected font
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         String defaultValue = "fonts/OpenDyslexic-Regular.otf";
-        String currentFont = sharedPref.getString(getString(R.string.font_pref_key), defaultValue);
+        String currentFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultValue);
         switch (currentFont) {
             case "fonts/Arial-Regular.ttf":
                 updateCheckMark(0);
@@ -107,8 +111,7 @@ public class SettingsFontFragment extends Fragment {
         arialOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
+                SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(getString(R.string.font_pref_key), "fonts/Arial-Regular.ttf");
                 editor.apply();
                 updateCheckMark(0);
@@ -118,8 +121,7 @@ public class SettingsFontFragment extends Fragment {
         courierOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
+                SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(getString(R.string.font_pref_key), "fonts/Courier-Regular.ttf");
                 editor.apply();
                 updateCheckMark(1);
@@ -129,8 +131,7 @@ public class SettingsFontFragment extends Fragment {
         helveticaOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
+                SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(getString(R.string.font_pref_key), "fonts/Helvetica-Regular.ttf");
                 editor.apply();
                 updateCheckMark(2);
@@ -140,8 +141,7 @@ public class SettingsFontFragment extends Fragment {
         openDyslexicOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
+                SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(getString(R.string.font_pref_key), "fonts/OpenDyslexic-Regular.otf");
                 editor.apply();
                 updateCheckMark(3);
@@ -151,8 +151,7 @@ public class SettingsFontFragment extends Fragment {
         robotoOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
+                SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(getString(R.string.font_pref_key), "fonts/Roboto-Regular.ttf");
                 editor.apply();
                 updateCheckMark(4);
@@ -162,8 +161,7 @@ public class SettingsFontFragment extends Fragment {
         verdanaOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
+                SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString(getString(R.string.font_pref_key), "fonts/Verdana-Regular.ttf");
                 editor.apply();
                 updateCheckMark(5);
