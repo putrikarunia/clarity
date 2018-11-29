@@ -61,7 +61,6 @@ public class SettingsFontFragment extends Fragment {
 
         activateListeners();        // Activate Button listeners
 
-
         // Update the position of the selection check mark to the currently selected font
         String defaultValue = "fonts/OpenDyslexic-Regular.otf";
         String currentFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultValue);

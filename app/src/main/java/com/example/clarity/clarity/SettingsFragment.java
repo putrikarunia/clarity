@@ -28,11 +28,17 @@ public class SettingsFragment extends Fragment {
 
     View v;
     Context context;
+
+    // User saved preferences
     SharedPreferences sharedPrefs;
 
+    // All possible values for font size and line spacing
     static final List<Integer> FONT_SIZES = Arrays.asList(8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48);
     static final List<Float> LINE_SPACING =  new ArrayList<>(Arrays.asList(0.8f, 1f, 1.15f, 1.5f, 2f, 3f));
 
+    // UI Elements
+
+    // Highlight color
     ImageView orangeHighlight;
     ImageView yellowHighlight;
     ImageView blueHighlight;
@@ -40,27 +46,28 @@ public class SettingsFragment extends Fragment {
     ImageView redHighlight;
     ImageView highlightCheck;
 
+    // Text color
     ImageView navyText;
     ImageView grayText;
     ImageView blackText;
     ImageView textColorCheck;
 
+    // Text size
     TextView currentFontSize;
     ImageView fontSizeUp;
     ImageView fontSizeDown;
 
+    // Line spacing
     TextView currentLineSpacing;
     ImageView lineSpacingUp;
     ImageView lineSpacingDown;
 
-
+    // Font options
     ConstraintLayout fontOption;
-    ConstraintLayout resetSettings;
-
     TextView fontSample;
 
-
-
+    // Reset to default values
+    ConstraintLayout resetSettings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,8 +78,9 @@ public class SettingsFragment extends Fragment {
         context = container.getContext();
 
         // Load the shared preferences (user's settings)
-        // and ensure values are updated here when changed by user
         sharedPrefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        // Ensure font sample gets updated when changed from font settings fragment
         sharedPrefs.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
@@ -152,8 +160,6 @@ public class SettingsFragment extends Fragment {
                 break;
         }
 
-
-
         return v;
     }
 
@@ -183,6 +189,7 @@ public class SettingsFragment extends Fragment {
                 float currLineSpacing = sharedPrefs.getFloat(
                         getString(R.string.line_spacing_pref_key), defaultLineSpacing);
 
+                // Change to a larger line spacing, unless already at max
                 int i = LINE_SPACING.indexOf(currLineSpacing);
                 if (i != -1) {
                     i = Math.min(i + 1, LINE_SPACING.size() - 1);
@@ -200,6 +207,7 @@ public class SettingsFragment extends Fragment {
                 float currLineSpacing = sharedPrefs.getFloat(
                         getString(R.string.line_spacing_pref_key), defaultLineSpacing);
 
+                // Change to a smaller line spacing, unless already at min
                 int i = LINE_SPACING.indexOf(currLineSpacing);
                 if (i != -1) {
                     i = Math.max(i - 1, 0);
@@ -233,7 +241,7 @@ public class SettingsFragment extends Fragment {
                 int currFontSize = sharedPrefs.getInt(
                         getString(R.string.text_size_pref_key), defaultFontSize);
 
-                // Change t0 the next smaller font size, unless already min size
+                // Change to the next smaller font size, unless already min size
                 int fontIndex = FONT_SIZES.indexOf(currFontSize);
                 if (fontIndex != -1) {
                     fontIndex = Math.max(fontIndex - 1, 0);
