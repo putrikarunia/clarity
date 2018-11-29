@@ -190,14 +190,15 @@ public class TranslateFragment extends Fragment {
         // Enable Tracker highlight settings
         highlighter = (ImageView) v.findViewById(R.id.highlighter);
 
+        // Adjust shift value according to line height
+        shift = (int) (translation.getLineHeight());
+
         // Adjust size of highlight to match text height
-        ViewGroup.LayoutParams hlParams = highlighter.getLayoutParams();
-        hlParams.height =  (int) translation.getTextSize();
+        RelativeLayout.LayoutParams hlParams = (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
+        hlParams.height = (int) translation.getTextSize();
         highlighter.setLayoutParams(hlParams);
 
-        // Adjust shift value according to line height and set starting location
-        shift = translation.getLineHeight();
-        translation.setIncludeFontPadding(false);
+        // TODO Somehow (?) adjust starting position of highlight so it's aligned w/ any font :(
 
         // Update color of highlighter according to user preference
         int defaultHighlight = R.color.highlightOrange;
