@@ -43,6 +43,9 @@ import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
 
 public class TranslateFragment extends Fragment {
 
+    // Preference file
+    SharedPreferences sharedPrefs;
+
     // Variables
     private View v;
     private Context context;
@@ -98,6 +101,7 @@ public class TranslateFragment extends Fragment {
         // Inflate fragment view
         v = inflater.inflate(R.layout.fragment_translate, container, false);
         context = container.getContext();
+        sharedPrefs = getActivity().getPreferences(Context.MODE_PRIVATE);
 
 
         // Retrieve user input
@@ -115,14 +119,31 @@ public class TranslateFragment extends Fragment {
         folderName = getArguments().getString("folderName");
         fileName = getArguments().getString("fileName");
 
+        // Get text display settings
+        String defaultFont = "fonts/OpenDyslexic-Regular.otf";
+        String selectedFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultFont);
+
+        int defaultTextColor = R.color.textGray;
+        int selectedTextColor = sharedPrefs.getInt(
+                getString(R.string.text_color_pref_key), defaultTextColor);
+
+        int defaultTextSize = 14;
+        int selectedTextSize = sharedPrefs.getInt(
+                getString(R.string.text_size_pref_key), defaultTextSize);
+
+        float defaultLineSpacing = 1.15f;
+        float selectedLineSp = sharedPrefs.getFloat(
+                getString(R.string.line_spacing_pref_key), defaultLineSpacing);
+
         // Update Translation TextView settings
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String defaultValue = "fonts/OpenDyslexic-Regular.otf";
-        String selectedFont = sharedPref.getString(getString(R.string.font_pref_key), defaultValue);
+
         translation = (TextView) v.findViewById(R.id.text_translation);
         translation.setTypeface(Typeface.createFromAsset
                 (context.getAssets(), selectedFont));
         translation.setText(input);                     // Store input in TextView
+        translation.setTextColor(getResources().getColor(selectedTextColor));
+        translation.setTextSize(selectedTextSize);
+        translation.setLineSpacing(0, selectedLineSp);
         translation.post(new Runnable() {               // Retrieve & set num of lines in TV; Tracker's bounds
             @Override
             public void run() {
@@ -170,6 +191,10 @@ public class TranslateFragment extends Fragment {
         // TODO Update height of highlighter depending on font size as well
         // TODO Update color of highlighter according to settings
 
+
+        int defaultHighlight = R.color.highlightOrange;
+        int selectedHighlight = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
+        highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
 
 
         // Word Selection Settings
