@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -25,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -119,7 +121,8 @@ public class TranslateFragment extends Fragment {
         folderName = getArguments().getString("folderName");
         fileName = getArguments().getString("fileName");
 
-        // Get text display settings
+        // Get text display settings from saved preferences
+
         String defaultFont = "fonts/OpenDyslexic-Regular.otf";
         String selectedFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultFont);
 
@@ -136,7 +139,6 @@ public class TranslateFragment extends Fragment {
                 getString(R.string.line_spacing_pref_key), defaultLineSpacing);
 
         // Update Translation TextView settings
-
         translation = (TextView) v.findViewById(R.id.text_translation);
         translation.setTypeface(Typeface.createFromAsset
                 (context.getAssets(), selectedFont));
@@ -187,11 +189,16 @@ public class TranslateFragment extends Fragment {
 
         // Enable Tracker highlight settings
         highlighter = (ImageView) v.findViewById(R.id.highlighter);
-        shift = dpToPx(25);         // TODO Change this depending on size of font
-        // TODO Update height of highlighter depending on font size as well
-        // TODO Update color of highlighter according to settings
 
+        // Adjust size of highlight to match text height
+        ViewGroup.LayoutParams hlParams = highlighter.getLayoutParams();
+        hlParams.height = (int) translation.getTextSize();
+        highlighter.setLayoutParams(hlParams);
 
+        // Adjust shift value according to line height
+        shift = translation.getLineHeight();
+
+        // Update color of highlighter according to user preference
         int defaultHighlight = R.color.highlightOrange;
         int selectedHighlight = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
         highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
