@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -32,6 +33,9 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class AddFragment extends Fragment implements View.OnClickListener {
@@ -81,16 +85,12 @@ public class AddFragment extends Fragment implements View.OnClickListener {
             // 1. User selects to input text
             case R.id.paste_text:
                 newFragment = new PasteFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_add, newFragment).commit();
                 break;
 
             // 2. User selects to take a photo
             case R.id.use_cam:
                 showImageImportDialog();
-                newFragment = new TranslateFragment();
-
-                Bundle args = new Bundle();                             // Use bundle to send info from fragment to fragment
-                args.putString("input", input);    // Store user input into bundle
-                newFragment.setArguments(args);                         // Set next fragment's args to bundle
 
                 break;
 
@@ -100,8 +100,6 @@ public class AddFragment extends Fragment implements View.OnClickListener {
 
 
         }
-
-        getFragmentManager().beginTransaction().replace(R.id.fragment_add, newFragment).commit();
 
 
     }
@@ -176,6 +174,21 @@ public class AddFragment extends Fragment implements View.OnClickListener {
         ActivityCompat.requestPermissions(getActivity(), cameraPermission, CAMERA_REQUEST_CODE);
     }
 
+    private String getFilePath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+
+        Cursor cursor = getContext().getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(projection[0]);
+            String picturePath = cursor.getString(columnIndex); // returns null
+            cursor.close();
+            return picturePath;
+        }
+        return null;
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
@@ -212,23 +225,24 @@ public class AddFragment extends Fragment implements View.OnClickListener {
             if(requestCode == IMAGE_PICK_CAMERA_CODE){
                 CropImage.activity(image_uri)
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(getActivity());
+                        .start(getContext(), this);
             }
             if(requestCode == IMAGE_PICK_GALLERY_CODE){
                 CropImage.activity(data.getData())
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(getActivity());
+                        .start(getContext(), this);
             }
         }
         //get cropped image
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if(resultCode == getActivity().RESULT_OK){
+                Uri image = result.getUri();
                 Bitmap bitmap = null;
-                Bundle extras = data.getExtras();
-
-                if (extras != null) {
-                    bitmap = extras.getParcelable("data");
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), image);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
                 TextRecognizer recognizer = new TextRecognizer.Builder(getActivity().getApplicationContext()).build();
 
@@ -246,6 +260,22 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                     }
                     //set text to edit text
                     input = sb.toString();
+
+                    if(input.equals("")){
+                        input = "Did not find text";
+                    }
+
+                    Fragment newFragment = new TranslateFragment();
+                    Bundle args = new Bundle();                             // Use bundle to send info from fragment to fragment
+                    args.putString("input", input);    // Store user input into bundle
+                    args.putString("title", "");    // No title
+                    newFragment.setArguments(args);                         // Set next fragment's args to bundle
+
+                    // Switch fragment views
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.fragment_add, newFragment)
+                            .addToBackStack(null)
+                            .commit();
                 }
             }
             else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
