@@ -192,11 +192,12 @@ public class TranslateFragment extends Fragment {
 
         // Adjust size of highlight to match text height
         ViewGroup.LayoutParams hlParams = highlighter.getLayoutParams();
-        hlParams.height = (int) translation.getTextSize();
+        hlParams.height =  (int) translation.getTextSize();
         highlighter.setLayoutParams(hlParams);
 
-        // Adjust shift value according to line height
+        // Adjust shift value according to line height and set starting location
         shift = translation.getLineHeight();
+        translation.setIncludeFontPadding(false);
 
         // Update color of highlighter according to user preference
         int defaultHighlight = R.color.highlightOrange;
