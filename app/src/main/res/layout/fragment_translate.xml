@@ -68,8 +68,8 @@
             android:id="@+id/highlighter"
             android:layout_width="match_parent"
             android:layout_height="19dp"
-            android:layout_marginTop="57dp"
-            app:srcCompat="@color/defaultHighlight" />
+            android:layout_marginTop="56dp"
+            android:background="@color/defaultHighlight" />
 
         <ScrollView
             android:layout_width="match_parent"
