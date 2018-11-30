@@ -402,10 +402,6 @@ public class TranslateFragment extends Fragment {
                 Toast.makeText(widget.getContext(), selected, Toast.LENGTH_SHORT)
                         .show();
 
-                System.out.println("WOW");
-                System.out.println(widget.getLayoutParams());
-                System.out.println(widget.getX());
-                System.out.println(widget.getY());
                 wordPopup.loadWord(selectedWord, tapX, tapY);
 
             }

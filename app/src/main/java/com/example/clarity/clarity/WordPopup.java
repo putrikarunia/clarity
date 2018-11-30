@@ -107,7 +107,6 @@ public class WordPopup {
     //call back for fetching syllables
     public void onSyllablesFetched(String response){
 
-        System.out.println(response);
 
         //Get the word broken into syllables with * characters
         int startIndex = response.indexOf("hw\":\"") + 5;
@@ -150,7 +149,6 @@ public class WordPopup {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(context);
         String url ="https://www.dictionaryapi.com/api/v3/references/collegiate/json/"+word+"?key=d71dc42f-637f-4003-841a-3049f70d4c1f";
-        System.out.println(url);
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -174,12 +172,10 @@ public class WordPopup {
     public void onIconFetched(String response){
 
         //Parse out the image link
-        System.out.println("IN");
         int startIndex = response.indexOf("link\":") + 8;
         response = response.substring(startIndex);
         int endIndex = response.indexOf("\",");
         response = response.substring(0, endIndex);
-        System.out.println(response);
 
         ImageView i = (ImageView) view.findViewById(R.id.icon);
         Picasso.get().load(response).into(i);
@@ -208,8 +204,6 @@ public class WordPopup {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        System.out.println("WOW");
-                        System.out.println(response);
                         onIconFetched(response);
                     }
                 }, new Response.ErrorListener() {
