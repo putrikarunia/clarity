@@ -40,6 +40,9 @@ import java.util.Locale;
 
 import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
 
+import android.view.View.*;
+import android.view.*;
+
 public class TranslateFragment extends Fragment {
 
     // Variables
@@ -92,6 +95,10 @@ public class TranslateFragment extends Fragment {
 
     // Word popup
     private WordPopup wordPopup;
+
+    //coordinates of touch
+    private float tapX = 0;
+    private float tapY = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -173,7 +180,19 @@ public class TranslateFragment extends Fragment {
         trackWordSelection();       // Tracks word selection (highlights word when selected)
 
         //create word popup
-        wordPopup = new WordPopup(v, getActivity().getApplicationContext(), 0.0f);
+        wordPopup = new WordPopup(v, getActivity().getApplicationContext());
+
+        v.findViewById(R.id.text_translation).setOnTouchListener(new OnTouchListener()
+        {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                tapX = event.getX();
+                tapY = event.getY();
+                return false;
+            }
+        });
 
 
         return v;
@@ -183,6 +202,10 @@ public class TranslateFragment extends Fragment {
 
 
     /*-------------------------------- FUNCTIONS --------------------------------*/
+
+
+
+
     // Activates all Button listeners
     public void activateListeners() {
 
@@ -379,8 +402,11 @@ public class TranslateFragment extends Fragment {
                 Toast.makeText(widget.getContext(), selected, Toast.LENGTH_SHORT)
                         .show();
 
-
-                wordPopup.loadWord(selectedWord);
+                System.out.println("WOW");
+                System.out.println(widget.getLayoutParams());
+                System.out.println(widget.getX());
+                System.out.println(widget.getY());
+                wordPopup.loadWord(selectedWord, tapX, tapY);
 
             }
 

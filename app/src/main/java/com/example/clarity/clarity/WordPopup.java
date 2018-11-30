@@ -2,6 +2,8 @@ package com.example.clarity.clarity;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
+
+import android.app.ActionBar;
 import android.content.*;
 
 import java.util.ArrayList;
@@ -35,18 +37,18 @@ public class WordPopup {
 
     private TextToSpeech tts;
 
+    private float xCoord = 0;
     private float yCoord = 0;
 
     private boolean syllablesFetched = false;
     private boolean iconFetched = false;
 
-    public WordPopup (View v, Context c, float y) {
+    public WordPopup (View v, Context c) {
 
         view = v;
 
         context = c;
 
-        yCoord = y;
 
         tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
@@ -66,7 +68,10 @@ public class WordPopup {
 
     }
 
-    public void loadWord(String w){
+    public void loadWord(String w, float x, float y){
+
+        xCoord = x;
+        yCoord = y;
 
         word = w;
 
@@ -88,7 +93,7 @@ public class WordPopup {
         ((TextView) view.findViewById(R.id.syllablesText)).setText(text);
 
         //position the popup
-        view.findViewById(R.id.popup).setY(yCoord);
+        view.findViewById(R.id.popup).setY(yCoord + 250);
 
 
         //show the popup

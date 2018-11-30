@@ -79,7 +79,7 @@
             android:background="@drawable/rounded_corner"
             android:elevation="5dp"
             android:orientation="horizontal"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/icon"
@@ -104,9 +104,11 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:adjustViewBounds="true"
                 android:background="@null"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/audio_whole_text" />
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/volume" />
         </LinearLayout>
 
         <ScrollView
