@@ -359,7 +359,7 @@ public class SettingsFragment extends Fragment {
     // Sync font sample to selected font
     private void updateSampleText() {
         String defaultValue = "fonts/OpenDyslexic-Regular.otf";
-        String selectedFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultValue);
+        String selectedFont = sharedPrefs.getString(context.getString(R.string.font_pref_key), defaultValue);
         fontSample = (TextView) v.findViewById(R.id.fontSample);
         fontSample.setTypeface(Typeface.createFromAsset
                 (context.getAssets(), selectedFont));
@@ -390,8 +390,8 @@ public class SettingsFragment extends Fragment {
 
     private void resetToDefaultSettings() {
         SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString(getString(R.string.font_pref_key), getString(R.string.open_dyslexic_dir));
-        editor.putInt(getString(R.string.highlight_color_pref_key), R.color.highlightOrange);
+        editor.putString(context.getString(R.string.font_pref_key), context.getString(R.string.open_dyslexic_dir));
+        editor.putInt(context.getString(R.string.highlight_color_pref_key), R.color.highlightOrange);
         editor.putInt(getString(R.string.text_color_pref_key), R.color.textGray);
         editor.apply();
 
