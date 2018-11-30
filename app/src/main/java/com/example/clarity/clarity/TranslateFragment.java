@@ -90,6 +90,9 @@ public class TranslateFragment extends Fragment {
     // Back button
     private Button back;
 
+    // Word popup
+    private WordPopup wordPopup;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -168,6 +171,9 @@ public class TranslateFragment extends Fragment {
 
         // Word Selection Settings
         trackWordSelection();       // Tracks word selection (highlights word when selected)
+
+        //create word popup
+        wordPopup = new WordPopup(v, getActivity().getApplicationContext(), 0.0f);
 
 
         return v;
@@ -372,6 +378,10 @@ public class TranslateFragment extends Fragment {
                 Log.d("tapped on:", selected);
                 Toast.makeText(widget.getContext(), selected, Toast.LENGTH_SHORT)
                         .show();
+
+
+                wordPopup.loadWord(selectedWord);
+
             }
 
             @Override

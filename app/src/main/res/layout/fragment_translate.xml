@@ -71,6 +71,44 @@
             android:layout_marginTop="57dp"
             app:srcCompat="@color/defaultHighlight" />
 
+        <LinearLayout
+            android:id="@+id/popup"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_corner"
+            android:elevation="5dp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <TextView
+                android:id="@+id/syllablesText"
+                android:layout_width="146dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="18sp"
+                app:fontFamily="@font/odr" />
+
+            <ImageButton
+                android:id="@+id/audioButton"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/audio_whole_text" />
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
