@@ -79,7 +79,7 @@
             android:background="@drawable/rounded_corner"
             android:elevation="5dp"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/icon"

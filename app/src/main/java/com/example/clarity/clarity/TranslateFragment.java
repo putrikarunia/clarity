@@ -42,6 +42,9 @@ import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
 
 import android.view.View.*;
 import android.view.*;
+import android.text.*;
+
+import android.graphics.*;
 
 public class TranslateFragment extends Fragment {
 
@@ -190,6 +193,7 @@ public class TranslateFragment extends Fragment {
             {
                 tapX = event.getX();
                 tapY = event.getY();
+
                 return false;
             }
         });
@@ -402,7 +406,62 @@ public class TranslateFragment extends Fragment {
                 Toast.makeText(widget.getContext(), selected, Toast.LENGTH_SHORT)
                         .show();
 
-                wordPopup.loadWord(selectedWord, tapX, tapY);
+                TextView parentTextView = (TextView) widget;
+
+                Rect parentTextViewRect = new Rect();
+
+                // Initialize values for the computing of clickedText position
+                SpannableString completeText = (SpannableString)(parentTextView).getText();
+                Layout textViewLayout = parentTextView.getLayout();
+
+                double startOffsetOfClickedText = completeText.getSpanStart(this);
+                double endOffsetOfClickedText = completeText.getSpanEnd(this);
+                double startXCoordinatesOfClickedText = textViewLayout.getPrimaryHorizontal((int)startOffsetOfClickedText);
+                double endXCoordinatesOfClickedText = textViewLayout.getPrimaryHorizontal((int)endOffsetOfClickedText);
+
+
+                // Get the rectangle of the clicked text
+                int currentLineStartOffset = textViewLayout.getLineForOffset((int)startOffsetOfClickedText);
+                int currentLineEndOffset = textViewLayout.getLineForOffset((int)endOffsetOfClickedText);
+                boolean keywordIsInMultiLine = currentLineStartOffset != currentLineEndOffset;
+                textViewLayout.getLineBounds(currentLineStartOffset, parentTextViewRect);
+
+
+                // Update the rectangle position to his real position on screen
+                int[] parentTextViewLocation = {0,0};
+                parentTextView.getLocationOnScreen(parentTextViewLocation);
+
+                double parentTextViewTopAndBottomOffset = (
+                        parentTextViewLocation[1] -
+                                parentTextView.getScrollY() +
+                                parentTextView.getCompoundPaddingTop()
+                );
+                parentTextViewRect.top += parentTextViewTopAndBottomOffset;
+                parentTextViewRect.bottom += parentTextViewTopAndBottomOffset;
+
+                parentTextViewRect.left += (
+                        parentTextViewLocation[0] +
+                                startXCoordinatesOfClickedText +
+                                parentTextView.getCompoundPaddingLeft() -
+                                parentTextView.getScrollX()
+                );
+                parentTextViewRect.right = (int) (
+                        parentTextViewRect.left +
+                                endXCoordinatesOfClickedText -
+                                startXCoordinatesOfClickedText
+                );
+
+                int x = (parentTextViewRect.left + parentTextViewRect.right) / 2;
+                int y = parentTextViewRect.bottom;
+                if (keywordIsInMultiLine) {
+                    x = parentTextViewRect.left;
+                }
+
+                if (Math.abs((tapY - (y - 430))) < 200 || Math.abs((tapY - (y - 430))) > 275) {
+                    y = -500;
+                }
+
+                wordPopup.loadWord(selectedWord, x, y - 430);
 
             }
 
