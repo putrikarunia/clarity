@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -13,8 +14,10 @@ import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.text.Layout;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,7 +71,7 @@ public class TranslateFragment extends Fragment {
     private ImageView highlighter;        // Tracker highlighter
     private int shift;                    // highlight shift increment
     private int numOfLines = 0;           // # of lines in input TextView (sets bounds for tracker)
-    private int currTracker = 1;          // Current line of tracker - default: starts at 0
+    private int currTracker = 0;          // Current line of tracker - default: starts at 0
 
     // Word-selection variables
     private String selectedWord = "";     // Selected word
@@ -148,6 +151,7 @@ public class TranslateFragment extends Fragment {
         float selectedLineSp = sharedPrefs.getFloat(
                 getString(R.string.line_spacing_pref_key), defaultLineSpacing);
 
+
         // Update Translation TextView settings
         translation = (TextView) v.findViewById(R.id.text_translation);
         translation.setTypeface(Typeface.createFromAsset
@@ -183,6 +187,7 @@ public class TranslateFragment extends Fragment {
             deleteFile.setVisibility(View.VISIBLE);
         }
 
+
         // Sync Folder List
         shadowView = v.findViewById(R.id.save_shadow_view);
         folderContainer = v.findViewById(R.id.folder_container);
@@ -194,37 +199,35 @@ public class TranslateFragment extends Fragment {
         folderListAdapter = new FolderListAdapter(getActivity().getApplicationContext(), folderList, folderNameList, getActivity());
         folderListView.setAdapter(folderListAdapter);
 
-        activateListeners();        // Activate Button listeners
-
+        // Activate Button listeners
+        activateListeners();
 
         // Enable Tracker highlight settings
-        highlighter = (ImageView) v.findViewById(R.id.highlighter);
+        //highlighter = (ImageView) v.findViewById(R.id.highlighter);
 
         // Adjust shift value according to line height
         shift = (int) (translation.getLineHeight());
 
         // Adjust size of highlight to match text height
-        RelativeLayout.LayoutParams hlParams = (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
-        hlParams.height = (int) translation.getTextSize();
-        highlighter.setLayoutParams(hlParams);
+        //RelativeLayout.LayoutParams hlParams = (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
+        //hlParams.height = (int) translation.getTextSize();
+        //highlighter.setLayoutParams(hlParams);
 
         // TODO Somehow (?) adjust starting position of highlight so it's aligned w/ any font :(
 
         // Update color of highlighter according to user preference
         int defaultHighlight = R.color.highlightOrange;
         int selectedHighlight = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
-        highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
-
+        //highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
 
         // Word Selection Settings
         trackWordSelection();       // Tracks word selection (highlights word when selected)
 
-        //create word popup
+        // Create word popup
         wordPopup = new WordPopup(v, getActivity().getApplicationContext());
 
         v.findViewById(R.id.text_translation).setOnTouchListener(new OnTouchListener()
         {
-
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
@@ -319,8 +322,7 @@ public class TranslateFragment extends Fragment {
             }
         });
 
-
-        // 9. delete text file
+        // 9. Delete text file
         deleteFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -333,26 +335,67 @@ public class TranslateFragment extends Fragment {
     // Controls Tracker -- valid parameter is either "up" or "down"
     public void tracker(String dir) {
 
-        RelativeLayout.LayoutParams lp =
-                (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
+        //RelativeLayout.LayoutParams lp =
+        //        (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
 
         if (dir.equals("up")) {             // Move Up
             if (currTracker > 1) {
-                lp.setMargins(lp.leftMargin, lp.topMargin - shift, lp.rightMargin, lp.bottomMargin);
-                highlighter.setLayoutParams(lp);
+                //lp.setMargins(lp.leftMargin, lp.topMargin - shift, lp.rightMargin, lp.bottomMargin);
+                //highlighter.setLayoutParams(lp);
+                highlightLine();
                 currTracker -= 1;   // Decrement tracker line
+            } else {
+                Toast.makeText(v.getContext(), "Woops! Cannot track upwards", Toast.LENGTH_SHORT)
+                        .show();
             }
 
 
         } else if (dir.equals("down")) {    // Move Down
             if (currTracker < numOfLines) {
-                lp.setMargins(lp.leftMargin, lp.topMargin + shift, lp.rightMargin, lp.bottomMargin);
-                highlighter.setLayoutParams(lp);
+                //lp.setMargins(lp.leftMargin, lp.topMargin + shift, lp.rightMargin, lp.bottomMargin);
+                //highlighter.setLayoutParams(lp);
+                highlightLine();
                 currTracker += 1;   // Increment tracker line
+            } else {
+                Toast.makeText(v.getContext(), "Woops! Cannot track downwards", Toast.LENGTH_SHORT)
+                        .show();
             }
         }
 
     }
+
+
+    // Function grabs current line and uses Spannable to set the color appropriately
+    public void highlightLine() {
+        Layout layout = translation.getLayout();
+        String text = translation.getText().toString();
+
+        // Set start and end points of the line
+
+        int start, end;
+
+        if (currTracker == 0) {
+            start = 0;
+        } else {
+            start = layout.getLineEnd(currTracker - 1);
+        }
+
+        if (currTracker == numOfLines - 1) {
+            end = layout.getLineEnd(currTracker - 1);
+        } else {
+            end = layout.getLineEnd(currTracker);
+        }
+
+        CharSequence line = translation.getText().subSequence(start, end);
+
+        Spannable translateText = new SpannableString(text);
+        Spannable lineSpan = new SpannableString(line);
+        lineSpan.setSpan(new BackgroundColorSpan(Color.BLUE), 0, end - start, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
+        //translateText.setSpan(lineSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+    }
+
+
 
 
     /*-------------------- TEXT-TO-SPEECH --------------------*/
