@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -24,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,7 +43,13 @@ import java.util.Locale;
 
 import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
 
+import android.view.View.*;
+import android.view.*;
+
 public class TranslateFragment extends Fragment {
+
+    // Preference file
+    SharedPreferences sharedPrefs;
 
     // Variables
     private View v;
@@ -90,6 +99,13 @@ public class TranslateFragment extends Fragment {
     // Back button
     private Button back;
 
+    // Word popup
+    private WordPopup wordPopup;
+
+    //coordinates of touch
+    private float tapX = 0;
+    private float tapY = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,6 +113,7 @@ public class TranslateFragment extends Fragment {
         // Inflate fragment view
         v = inflater.inflate(R.layout.fragment_translate, container, false);
         context = container.getContext();
+        sharedPrefs = getActivity().getPreferences(Context.MODE_PRIVATE);
 
 
         // Retrieve user input
@@ -105,7 +122,7 @@ public class TranslateFragment extends Fragment {
         // Set title if applicable
         translationTitle = v.findViewById(R.id.translate_header);
         title = getArguments().getString("title");
-        if (!title.equals("")) {
+        if (title != null && !title.equals("")) {
             translationTitle.setText(title);
             newText = false;
         }
@@ -114,12 +131,31 @@ public class TranslateFragment extends Fragment {
         folderName = getArguments().getString("folderName");
         fileName = getArguments().getString("fileName");
 
+        // Get text display settings from saved preferences
+
+        String defaultFont = "fonts/OpenDyslexic-Regular.otf";
+        String selectedFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultFont);
+
+        int defaultTextColor = R.color.textGray;
+        int selectedTextColor = sharedPrefs.getInt(
+                getString(R.string.text_color_pref_key), defaultTextColor);
+
+        int defaultTextSize = 14;
+        int selectedTextSize = sharedPrefs.getInt(
+                getString(R.string.text_size_pref_key), defaultTextSize);
+
+        float defaultLineSpacing = 1.15f;
+        float selectedLineSp = sharedPrefs.getFloat(
+                getString(R.string.line_spacing_pref_key), defaultLineSpacing);
+
         // Update Translation TextView settings
-        String selectedFont = "fonts/OpenDyslexic-Regular.otf";          // Sync to font saved in settings (TO-DO)
         translation = (TextView) v.findViewById(R.id.text_translation);
         translation.setTypeface(Typeface.createFromAsset
                 (context.getAssets(), selectedFont));
         translation.setText(input);                     // Store input in TextView
+        translation.setTextColor(getResources().getColor(selectedTextColor));
+        translation.setTextSize(selectedTextSize);
+        translation.setLineSpacing(0, selectedLineSp);
         translation.post(new Runnable() {               // Retrieve & set num of lines in TV; Tracker's bounds
             @Override
             public void run() {
@@ -163,11 +199,40 @@ public class TranslateFragment extends Fragment {
 
         // Enable Tracker highlight settings
         highlighter = (ImageView) v.findViewById(R.id.highlighter);
-        shift = dpToPx(25);         // Change this depending on size of font (TO-DO)
+
+        // Adjust shift value according to line height
+        shift = (int) (translation.getLineHeight());
+
+        // Adjust size of highlight to match text height
+        RelativeLayout.LayoutParams hlParams = (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
+        hlParams.height = (int) translation.getTextSize();
+        highlighter.setLayoutParams(hlParams);
+
+        // TODO Somehow (?) adjust starting position of highlight so it's aligned w/ any font :(
+
+        // Update color of highlighter according to user preference
+        int defaultHighlight = R.color.highlightOrange;
+        int selectedHighlight = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
+        highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
 
 
         // Word Selection Settings
         trackWordSelection();       // Tracks word selection (highlights word when selected)
+
+        //create word popup
+        wordPopup = new WordPopup(v, getActivity().getApplicationContext());
+
+        v.findViewById(R.id.text_translation).setOnTouchListener(new OnTouchListener()
+        {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                tapX = event.getX();
+                tapY = event.getY();
+                return false;
+            }
+        });
 
 
         return v;
@@ -177,6 +242,10 @@ public class TranslateFragment extends Fragment {
 
 
     /*-------------------------------- FUNCTIONS --------------------------------*/
+
+
+
+
     // Activates all Button listeners
     public void activateListeners() {
 
@@ -371,6 +440,9 @@ public class TranslateFragment extends Fragment {
                 Log.d("tapped on:", selected);
                 Toast.makeText(widget.getContext(), selected, Toast.LENGTH_SHORT)
                         .show();
+
+                wordPopup.loadWord(selectedWord, tapX, tapY);
+
             }
 
             @Override
