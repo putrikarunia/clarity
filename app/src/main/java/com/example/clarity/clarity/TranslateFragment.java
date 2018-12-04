@@ -71,7 +71,8 @@ public class TranslateFragment extends Fragment {
     private ImageView highlighter;        // Tracker highlighter
     private int shift;                    // highlight shift increment
     private int numOfLines = 0;           // # of lines in input TextView (sets bounds for tracker)
-    private int currTracker = 0;          // Current line of tracker - default: starts at 0
+    private int currTracker = -1;          // Current line of tracker - default: starts at -1, not displayed
+    int highlightColor;
 
     // Word-selection variables
     private String selectedWord = "";     // Selected word
@@ -217,7 +218,7 @@ public class TranslateFragment extends Fragment {
 
         // Update color of highlighter according to user preference
         int defaultHighlight = R.color.highlightOrange;
-        int selectedHighlight = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
+        highlightColor = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
         //highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
 
         // Word Selection Settings
@@ -225,6 +226,8 @@ public class TranslateFragment extends Fragment {
 
         // Create word popup
         wordPopup = new WordPopup(v, getActivity().getApplicationContext());
+
+
 
         v.findViewById(R.id.text_translation).setOnTouchListener(new OnTouchListener()
         {
@@ -339,11 +342,11 @@ public class TranslateFragment extends Fragment {
         //        (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
 
         if (dir.equals("up")) {             // Move Up
-            if (currTracker > 1) {
+            if (currTracker > 0) {
                 //lp.setMargins(lp.leftMargin, lp.topMargin - shift, lp.rightMargin, lp.bottomMargin);
                 //highlighter.setLayoutParams(lp);
-                highlightLine();
                 currTracker -= 1;   // Decrement tracker line
+                highlightLine();
             } else {
                 Toast.makeText(v.getContext(), "Woops! Cannot track upwards", Toast.LENGTH_SHORT)
                         .show();
@@ -351,11 +354,11 @@ public class TranslateFragment extends Fragment {
 
 
         } else if (dir.equals("down")) {    // Move Down
-            if (currTracker < numOfLines) {
+            if (currTracker < numOfLines - 1) {
                 //lp.setMargins(lp.leftMargin, lp.topMargin + shift, lp.rightMargin, lp.bottomMargin);
                 //highlighter.setLayoutParams(lp);
-                highlightLine();
                 currTracker += 1;   // Increment tracker line
+                highlightLine();
             } else {
                 Toast.makeText(v.getContext(), "Woops! Cannot track downwards", Toast.LENGTH_SHORT)
                         .show();
@@ -380,18 +383,14 @@ public class TranslateFragment extends Fragment {
             start = layout.getLineEnd(currTracker - 1);
         }
 
-        if (currTracker == numOfLines - 1) {
-            end = layout.getLineEnd(currTracker - 1);
-        } else {
-            end = layout.getLineEnd(currTracker);
-        }
+        end = layout.getLineEnd(currTracker);
 
         CharSequence line = translation.getText().subSequence(start, end);
 
         Spannable translateText = new SpannableString(text);
-        Spannable lineSpan = new SpannableString(line);
-        lineSpan.setSpan(new BackgroundColorSpan(Color.BLUE), 0, end - start, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
-        //translateText.setSpan(lineSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        translateText.setSpan(new BackgroundColorSpan(context.getResources().getColor(highlightColor)),
+                start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
+        translation.setText(translateText);
 
     }
 
