@@ -11,4 +11,4 @@
 /captures
 .externalNativeBuild
 .idea/misc.xml
-/app/build/
+app/build/
