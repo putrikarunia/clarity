@@ -1,4 +1,4 @@
-#Mon Dec 03 10:25:40 PST 2018
+#Wed Dec 05 02:33:00 PST 2018
 base.0=/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/transforms/dexMerger/debug/10
 path.0=classes.dex
 renamed.0=classes.dex

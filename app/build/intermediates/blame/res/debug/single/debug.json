@@ -916,6 +916,10 @@
         "source": "/Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/res/drawable-v24/empty_gallery.png"
     },
     {
+        "merged": "/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/res/merged/debug/drawable_volume.png.flat",
+        "source": "/Users/surelywang/Desktop/CS160_Clarity/clarity/app/src/main/res/drawable/volume.png"
+    },
+    {
         "merged": "/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/res/merged/debug/drawable-v21_abc_dialog_material_background.xml.flat",
         "source": "/Users/surelywang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/af7a101aa37405deef9bbcb039070f04/res/drawable-v21/abc_dialog_material_background.xml"
     },

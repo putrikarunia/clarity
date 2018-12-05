@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
-    api-level="28"
+    abi="armeabi-v7a,armeabi"
+    api-level="21"
     build-mode="FULL"
-    density="560dpi"
+    density="xxhdpi"
     format="10"
     plugin-version="3.2.0"
-    timestamp="1543876993252"
+    timestamp="1544006765753"
     token="-5652480754390280208"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -18,14 +18,17 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="58" />
     <task
         name="verifier"
-        duration="0" />
+        duration="98" />
 
     <artifact
-        location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
+    <artifact
+        location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+        type="SPLIT_MAIN" />
     <artifact
         location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
         type="SPLIT" />
@@ -45,9 +48,6 @@
         location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
     <artifact
-        location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-        type="SPLIT" />
-    <artifact
         location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
         type="SPLIT" />
     <artifact
@@ -59,17 +59,17 @@
     <artifact
         location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
         type="SPLIT" />
-    <artifact
-        location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1543876993252"
+        timestamp="1544006765753"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
+        <artifact
+            location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
@@ -89,9 +89,6 @@
             location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
@@ -103,9 +100,6 @@
         <artifact
             location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/surelywang/Desktop/CS160_Clarity/clarity/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

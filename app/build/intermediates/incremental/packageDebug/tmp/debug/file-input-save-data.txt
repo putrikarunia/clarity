@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Dec 03 11:48:32 PST 2018
+#Wed Dec 05 02:46:19 PST 2018
 17.baseType=DIRECTORY
 4.path=fonts/OpenDyslexic-Italic.otf
 22.set=DEX

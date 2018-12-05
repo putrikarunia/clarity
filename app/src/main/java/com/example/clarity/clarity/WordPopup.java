@@ -49,7 +49,6 @@ public class WordPopup {
 
         context = c;
 
-
         tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
@@ -98,8 +97,6 @@ public class WordPopup {
 
         //show the popup
         view.findViewById(R.id.popup).setVisibility(View.VISIBLE);
-
-
 
 
     }
@@ -192,7 +189,7 @@ public class WordPopup {
         keys.add("AIzaSyBVc_ke1IJmuQMwj4o_HyjZ_PWqV0AqAng");
         keys.add("AIzaSyCdhW_u5T_PxGQ6vsCWC1kLSpnNA-eV8TI");
         keys.add("AIzaSyCczHqAWafzqOwqM8YZP6LuaEJxLfVIgEU");
-        keys.add("AIzaSyDB8zqKQzmMsUkx_cD5Y04wO0D6vQaPjR0");
+        //keys.add("AIzaSyDB8zqKQzmMsUkx_cD5Y04wO0D6vQaPjR0");
         keys.add("AIzaSyBvwhx4LiSPWcgzNDtocEV7SIc7NaUDADA");
         keys.add("AIzaSyBQEoyE-VZQpI588FdRah3RfSoVHaaj9U4");
 
