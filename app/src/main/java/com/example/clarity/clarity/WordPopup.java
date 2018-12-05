@@ -104,38 +104,39 @@ public class WordPopup {
     //call back for fetching syllables
     public void onSyllablesFetched(String response){
 
+        if (!response.equals("[]")) {
+            //Get the word broken into syllables with * characters
+            int startIndex = response.indexOf("hw\":\"") + 5;
+            response = response.substring(startIndex);
+            int endIndex = response.indexOf("\",");
+            response = response.substring(0, endIndex);
 
-        //Get the word broken into syllables with * characters
-        int startIndex = response.indexOf("hw\":\"") + 5;
-        response = response.substring(startIndex);
-        int endIndex = response.indexOf("\",");
-        response = response.substring(0, endIndex);
+            int syllableStartIndex = 0;
+            int syllableEndIndex = 0;
 
-        int syllableStartIndex = 0;
-        int syllableEndIndex = 0;
+            syllables = new ArrayList<>();
 
-        syllables = new ArrayList<>();
+            while (response.contains("*")) {
 
-        while (response.contains("*")) {
+                syllableEndIndex = response.indexOf("*");
+                String syllable = response.substring(syllableStartIndex, syllableEndIndex);
+                syllables.add(syllable);
 
-            syllableEndIndex = response.indexOf("*");
+                response = response.substring(syllableEndIndex + 1, response.length());
+
+            }
+
+            syllableEndIndex = response.length();
             String syllable = response.substring(syllableStartIndex, syllableEndIndex);
             syllables.add(syllable);
 
-            response = response.substring(syllableEndIndex + 1, response.length());
+            syllablesFetched = true;
 
-        }
+            if (syllablesFetched && iconFetched || true) {
 
-        syllableEndIndex = response.length();
-        String syllable = response.substring(syllableStartIndex, syllableEndIndex);
-        syllables.add(syllable);
+                formatBox();
 
-        syllablesFetched = true;
-
-        if (syllablesFetched && iconFetched || true) {
-
-            formatBox();
-
+            }
         }
 
     }
@@ -175,7 +176,11 @@ public class WordPopup {
         response = response.substring(0, endIndex);
 
         ImageView i = (ImageView) view.findViewById(R.id.icon);
-        Picasso.get().load(response).into(i);
+        try {
+            Picasso.get().load(response).into(i);
+        } catch (Exception e) {
+            // avoid crash if word doesn't have an image in search
+        }
 
 
     }
