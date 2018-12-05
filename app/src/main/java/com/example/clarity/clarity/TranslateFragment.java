@@ -74,7 +74,7 @@ public class TranslateFragment extends Fragment {
     private ImageView highlighter;        // Tracker highlighter
     private int shift;                    // highlight shift increment
     private int numOfLines = 0;           // # of lines in input TextView (sets bounds for tracker)
-    private int currTracker = -1;          // Current line of tracker - default: starts at -1, not displayed
+    private int currTracker = -1;         // Current line of tracker - default: starts at -1, not displayed
     int highlightColor;
 
     // Word-selection variables
@@ -85,6 +85,7 @@ public class TranslateFragment extends Fragment {
     // Text-to-Speech variables
     private Button playAll;
     private TextToSpeech tts;
+    private boolean currentlyPlaying = false;
 
     // Saving text variables
     private Button saveText;
@@ -212,20 +213,13 @@ public class TranslateFragment extends Fragment {
         // Adjust shift value according to line height
         shift = (int) (translation.getLineHeight());
 
-        // Adjust size of highlight to match text height
-        //RelativeLayout.LayoutParams hlParams = (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
-        //hlParams.height = (int) translation.getTextSize();
-        //highlighter.setLayoutParams(hlParams);
-
-        // TODO Somehow (?) adjust starting position of highlight so it's aligned w/ any font :(
-
         // Update color of highlighter according to user preference
         int defaultHighlight = R.color.highlightOrange;
         highlightColor = sharedPrefs.getInt(getString(R.string.highlight_color_pref_key), defaultHighlight);
         //highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
 
         // Word Selection Settings
-        trackWordSelection();       // Tracks word selection (highlights word when selected)
+        //trackWordSelection();       // Tracks word selection (highlights word when selected)
 
         // Create word popup
         wordPopup = new WordPopup(v, getActivity().getApplicationContext());
@@ -279,8 +273,70 @@ public class TranslateFragment extends Fragment {
         playAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speakOut(translation);
+                if (!currentlyPlaying) {
+                    currentlyPlaying = true;
+                    speakOut(translation);
+                } else {
+                    currentlyPlaying = false;
+                    onDestroy();
+                }
             }
+        });
+
+        translation.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                // Remove the "select all" option
+                menu.removeItem(android.R.id.selectAll);
+                // Remove the "cut" option
+                menu.removeItem(android.R.id.cut);
+                // Remove the "copy all" option
+                //menu.removeItem(android.R.id.copy);
+                return true;
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                // Called when action mode is first created
+
+                // Here is an example MenuItem
+                menu.add(0, 0, 0, "Definition").setIcon(R.drawable.color_circle);
+                return true;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()) {
+                    case 0:
+                        int min = 0;
+                        int max = translation.getText().length();
+                        if (translation.isFocused()) {
+                            final int selStart = translation.getSelectionStart();
+                            final int selEnd = translation.getSelectionEnd();
+
+                            min = Math.max(0, Math.min(selStart, selEnd));
+                            max = Math.max(0, Math.max(selStart, selEnd));
+                        }
+                        // Perform your definition lookup with the selected text
+                        final CharSequence selectedText = translation.getText().subSequence(min, max);
+                        //Log.d("tapped on:", selectedText.toString());
+                        //Toast.makeText(v.getContext(), selectedText, Toast.LENGTH_SHORT)
+                        //        .show();
+                        createPopup(selectedText.toString());
+                        // Finish and close the ActionMode
+                        mode.finish();
+                        return true;
+                    default:
+                        break;
+                }
+                return false;
+            }
+
         });
 
         // 4. Save text file
@@ -342,13 +398,8 @@ public class TranslateFragment extends Fragment {
     // Controls Tracker -- valid parameter is either "up" or "down"
     public void tracker(String dir) {
 
-        //RelativeLayout.LayoutParams lp =
-        //        (RelativeLayout.LayoutParams) highlighter.getLayoutParams();
-
         if (dir.equals("up")) {             // Move Up
             if (currTracker > 0) {
-                //lp.setMargins(lp.leftMargin, lp.topMargin - shift, lp.rightMargin, lp.bottomMargin);
-                //highlighter.setLayoutParams(lp);
                 currTracker -= 1;   // Decrement tracker line
                 highlightLine();
             } else {
@@ -356,11 +407,8 @@ public class TranslateFragment extends Fragment {
                         .show();
             }
 
-
         } else if (dir.equals("down")) {    // Move Down
             if (currTracker < numOfLines - 1) {
-                //lp.setMargins(lp.leftMargin, lp.topMargin + shift, lp.rightMargin, lp.bottomMargin);
-                //highlighter.setLayoutParams(lp);
                 currTracker += 1;   // Increment tracker line
                 highlightLine();
             } else {
@@ -371,6 +419,73 @@ public class TranslateFragment extends Fragment {
 
     }
 
+    public void createPopup(String word) {
+
+        TextView parentTextView = (TextView) translation;
+
+        Rect parentTextViewRect = new Rect();
+
+        // Initialize values for the computing of clickedText position
+        SpannableString completeText = (SpannableString)(parentTextView).getText();
+        Layout textViewLayout = parentTextView.getLayout();
+
+        double startOffsetOfClickedText = completeText.getSpanStart(this);
+        double endOffsetOfClickedText = completeText.getSpanEnd(this);
+        double startXCoordinatesOfClickedText = textViewLayout.getPrimaryHorizontal((int)startOffsetOfClickedText);
+        double endXCoordinatesOfClickedText = textViewLayout.getPrimaryHorizontal((int)endOffsetOfClickedText);
+
+
+        // Get the rectangle of the clicked text
+        int currentLineStartOffset = textViewLayout.getLineForOffset((int)startOffsetOfClickedText);
+        int currentLineEndOffset = textViewLayout.getLineForOffset((int)endOffsetOfClickedText);
+        boolean keywordIsInMultiLine = currentLineStartOffset != currentLineEndOffset;
+        textViewLayout.getLineBounds(currentLineStartOffset, parentTextViewRect);
+
+
+        // Update the rectangle position to his real position on screen
+        int[] parentTextViewLocation = {0,0};
+        parentTextView.getLocationOnScreen(parentTextViewLocation);
+
+        double parentTextViewTopAndBottomOffset = (
+                parentTextViewLocation[1] -
+                        parentTextView.getScrollY() +
+                        parentTextView.getCompoundPaddingTop()
+        );
+        parentTextViewRect.top += parentTextViewTopAndBottomOffset;
+        parentTextViewRect.bottom += parentTextViewTopAndBottomOffset;
+
+        parentTextViewRect.left += (
+                parentTextViewLocation[0] +
+                        startXCoordinatesOfClickedText +
+                        parentTextView.getCompoundPaddingLeft() -
+                        parentTextView.getScrollX()
+        );
+        parentTextViewRect.right = (int) (
+                parentTextViewRect.left +
+                        endXCoordinatesOfClickedText -
+                        startXCoordinatesOfClickedText
+        );
+
+        int x = (parentTextViewRect.left + parentTextViewRect.right) / 2;
+        int y = parentTextViewRect.bottom;
+        if (keywordIsInMultiLine) {
+            x = parentTextViewRect.left;
+        }
+
+
+        /*if (Math.abs((tapY - (y - 430))) < 200 || Math.abs((tapY - (y - 430))) > 275) {
+            y = -500;
+        }*/
+
+
+
+        if (Math.abs((tapY - (y - 430))) < 200 || Math.abs((tapY - (y - 430))) > 275) {
+            y += 500;
+        }
+
+        wordPopup.loadWord(word, x, y - 430);
+    }
+
 
     // Function grabs current line and uses Spannable to set the color appropriately
     public void highlightLine() {
@@ -378,7 +493,6 @@ public class TranslateFragment extends Fragment {
         String text = translation.getText().toString();
 
         // Set start and end points of the line
-
         int start, end;
 
         if (currTracker == 0) {
@@ -390,7 +504,6 @@ public class TranslateFragment extends Fragment {
         end = layout.getLineEnd(currTracker);
 
         CharSequence line = translation.getText().subSequence(start, end);
-
         Spannable translateText = new SpannableString(text);
         translateText.setSpan(new BackgroundColorSpan(context.getResources().getColor(highlightColor)),
                 start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
@@ -465,7 +578,7 @@ public class TranslateFragment extends Fragment {
             if (Character.isLetterOrDigit(possibleWord.charAt(0))) {
                 ClickableSpan clickSpan = getClickableSpan(possibleWord);
                 span.setSpan(clickSpan, start, end,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                       Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             }
 
@@ -548,8 +661,8 @@ public class TranslateFragment extends Fragment {
 
             @Override
             public void updateDrawState(TextPaint ds) {
-                //super.updateDrawState(ds);
-                //ds.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/OpenDyslexic-Bold.otf"));
+                super.updateDrawState(ds);
+                ds.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/OpenDyslexic-Bold.otf"));
             }
 
         };
@@ -754,13 +867,12 @@ public class TranslateFragment extends Fragment {
 
     /*-------------------- HELPERS --------------------*/
 
-    public static int dpToPx(int dp)
-    {
+    public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
-    public static int pxToDp(int px)
-    {
+    public static int pxToDp(int px) {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);
     }
+
 }
