@@ -93,7 +93,7 @@ public class WordPopup {
         ((TextView) view.findViewById(R.id.syllablesText)).setText(text);
 
         //position the popup
-        view.findViewById(R.id.popup).setY(yCoord + 250);
+        view.findViewById(R.id.popup).setY(yCoord);
 
 
         //show the popup
@@ -188,9 +188,17 @@ public class WordPopup {
     public void fetchIcon () {
 
         // Instantiate the RequestQueue.
+        ArrayList<String> keys = new ArrayList<>();
+        keys.add("AIzaSyBVc_ke1IJmuQMwj4o_HyjZ_PWqV0AqAng");
+        keys.add("AIzaSyCdhW_u5T_PxGQ6vsCWC1kLSpnNA-eV8TI");
+        keys.add("AIzaSyCczHqAWafzqOwqM8YZP6LuaEJxLfVIgEU");
+        keys.add("AIzaSyDB8zqKQzmMsUkx_cD5Y04wO0D6vQaPjR0");
+        keys.add("AIzaSyBvwhx4LiSPWcgzNDtocEV7SIc7NaUDADA");
+        keys.add("AIzaSyBQEoyE-VZQpI588FdRah3RfSoVHaaj9U4");
+
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "https://www.googleapis.com/customsearch/v1?" +
-                "key=AIzaSyBVc_ke1IJmuQMwj4o_HyjZ_PWqV0AqAng" +
+                "key=" + keys.get(3) +
                 "&num=1" +
                 "&q=" + word + "%20icon" +
                 "&imgSize=medium" +
