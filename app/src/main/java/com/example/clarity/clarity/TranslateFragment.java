@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -21,7 +21,9 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
@@ -29,7 +31,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,12 +46,6 @@ import java.util.List;
 import java.util.Locale;
 
 import static android.speech.tts.TextToSpeech.Engine.KEY_PARAM_VOLUME;
-
-import android.view.View.*;
-import android.view.*;
-import android.text.*;
-
-import android.graphics.*;
 
 public class TranslateFragment extends Fragment {
 
@@ -114,6 +109,15 @@ public class TranslateFragment extends Fragment {
     private float tapX = 0;
     private float tapY = 0;
 
+    int defaultTextColor = R.color.textGray;
+    int selectedTextColor = R.color.textGray;
+
+    int defaultTextSize = 14;
+    int selectedTextSize = 14;
+
+    float defaultLineSpacing = 1.15f;
+    float selectedLineSp = 1.15f;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -144,16 +148,16 @@ public class TranslateFragment extends Fragment {
         String defaultFont = "fonts/OpenDyslexic-Regular.otf";
         String selectedFont = sharedPrefs.getString(getString(R.string.font_pref_key), defaultFont);
 
-        int defaultTextColor = R.color.textGray;
-        int selectedTextColor = sharedPrefs.getInt(
+        defaultTextColor = R.color.textGray;
+        selectedTextColor = sharedPrefs.getInt(
                 getString(R.string.text_color_pref_key), defaultTextColor);
 
-        int defaultTextSize = 14;
-        int selectedTextSize = sharedPrefs.getInt(
+        defaultTextSize = 14;
+        selectedTextSize = sharedPrefs.getInt(
                 getString(R.string.text_size_pref_key), defaultTextSize);
 
-        float defaultLineSpacing = 1.15f;
-        float selectedLineSp = sharedPrefs.getFloat(
+        defaultLineSpacing = 1.15f;
+        selectedLineSp = sharedPrefs.getFloat(
                 getString(R.string.line_spacing_pref_key), defaultLineSpacing);
 
 
@@ -219,7 +223,7 @@ public class TranslateFragment extends Fragment {
         //highlighter.setBackgroundColor(context.getResources().getColor(selectedHighlight));
 
         // Word Selection Settings
-        //trackWordSelection();       // Tracks word selection (highlights word when selected)
+        trackWordSelection();       // Tracks word selection (highlights word when selected)
 
         // Create word popup
         wordPopup = new WordPopup(v, getActivity().getApplicationContext());
@@ -243,7 +247,6 @@ public class TranslateFragment extends Fragment {
 
 
     }
-
 
     /*-------------------------------- FUNCTIONS --------------------------------*/
 
@@ -283,61 +286,68 @@ public class TranslateFragment extends Fragment {
             }
         });
 
-        translation.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
-
+        translation.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                // Remove the "select all" option
-                menu.removeItem(android.R.id.selectAll);
-                // Remove the "cut" option
-                menu.removeItem(android.R.id.cut);
-                // Remove the "copy all" option
-                //menu.removeItem(android.R.id.copy);
-                return true;
+            public void onClick(View v) {
+                wordPopup.close();
             }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                // Called when action mode is first created
-
-                // Here is an example MenuItem
-                menu.add(0, 0, 0, "Definition").setIcon(R.drawable.color_circle);
-                return true;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                switch (item.getItemId()) {
-                    case 0:
-                        int min = 0;
-                        int max = translation.getText().length();
-                        if (translation.isFocused()) {
-                            final int selStart = translation.getSelectionStart();
-                            final int selEnd = translation.getSelectionEnd();
-
-                            min = Math.max(0, Math.min(selStart, selEnd));
-                            max = Math.max(0, Math.max(selStart, selEnd));
-                        }
-                        // Perform your definition lookup with the selected text
-                        final CharSequence selectedText = translation.getText().subSequence(min, max);
-                        //Log.d("tapped on:", selectedText.toString());
-                        //Toast.makeText(v.getContext(), selectedText, Toast.LENGTH_SHORT)
-                        //        .show();
-                        createPopup(selectedText.toString());
-                        // Finish and close the ActionMode
-                        mode.finish();
-                        return true;
-                    default:
-                        break;
-                }
-                return false;
-            }
-
         });
+
+//        translation.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
+//
+//            @Override
+//            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+//                // Remove the "select all" option
+//                menu.removeItem(android.R.id.selectAll);
+//                // Remove the "cut" option
+//                menu.removeItem(android.R.id.cut);
+//                // Remove the "copy all" option
+//                //menu.removeItem(android.R.id.copy);
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+//                // Called when action mode is first created
+//
+//                // Here is an example MenuItem
+//                menu.add(0, 0, 0, "Definition").setIcon(R.drawable.color_circle);
+//                return true;
+//            }
+//
+//            @Override
+//            public void onDestroyActionMode(ActionMode mode) {
+//            }
+//
+//            @Override
+//            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case 0:
+//                        int min = 0;
+//                        int max = translation.getText().length();
+//                        if (translation.isFocused()) {
+//                            final int selStart = translation.getSelectionStart();
+//                            final int selEnd = translation.getSelectionEnd();
+//
+//                            min = Math.max(0, Math.min(selStart, selEnd));
+//                            max = Math.max(0, Math.max(selStart, selEnd));
+//                        }
+//                        // Perform your definition lookup with the selected text
+//                        final CharSequence selectedText = translation.getText().subSequence(min, max);
+//                        Log.d("tapped on:", selectedText.toString());
+//                        Toast.makeText(v.getContext(), selectedText, Toast.LENGTH_SHORT)
+//                                .show();
+//                        createPopup(selectedText.toString());
+//                        // Finish and close the ActionMode
+//                        mode.finish();
+//                        return true;
+//                    default:
+//                        break;
+//                }
+//                return false;
+//            }
+//
+//        });
 
         // 4. Save text file
         saveText.setOnClickListener(new View.OnClickListener() {
@@ -421,6 +431,10 @@ public class TranslateFragment extends Fragment {
 
     public void createPopup(String word) {
 
+
+        Toast.makeText(context, word, Toast.LENGTH_SHORT)
+                .show();
+
         TextView parentTextView = (TextView) translation;
 
         Rect parentTextViewRect = new Rect();
@@ -503,10 +517,22 @@ public class TranslateFragment extends Fragment {
 
         end = layout.getLineEnd(currTracker);
 
-        CharSequence line = translation.getText().subSequence(start, end);
-        Spannable translateText = new SpannableString(text);
+
+        Toast.makeText(v.getContext(), start + " " + end, Toast.LENGTH_SHORT)
+                .show();
+
+        CharSequence line = translation.getText().subSequence(0, text.length());
+        Spannable translateText = new SpannableString(line);
+
+        translateText.setSpan(new BackgroundColorSpan(context.getResources().getColor(R.color.defaultBackground)),
+                0, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
+
         translateText.setSpan(new BackgroundColorSpan(context.getResources().getColor(highlightColor)),
                 start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
+
+        trackWordSelection();
+
+
         translation.setText(translateText);
 
     }
@@ -655,7 +681,7 @@ public class TranslateFragment extends Fragment {
                     y = -500;
                 }
 
-                wordPopup.loadWord(selectedWord, x, y - 430);
+                wordPopup.loadWord(selectedWord, x, tapY + 2 * Math.max(dpToPx(selectedTextSize), dpToPx(40)) );
 
             }
 
@@ -663,6 +689,8 @@ public class TranslateFragment extends Fragment {
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/OpenDyslexic-Bold.otf"));
+                ds.setUnderlineText(false); // set to false to remove underline
+                ds.setColor(getResources().getColor(selectedTextColor));
             }
 
         };

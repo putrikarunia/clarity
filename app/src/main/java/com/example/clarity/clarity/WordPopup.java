@@ -1,23 +1,23 @@
 package com.example.clarity.clarity;
 
-import com.android.volley.*;
-import com.android.volley.toolbox.*;
+import android.content.Context;
+import android.speech.tts.TextToSpeech;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import android.app.ActionBar;
-import android.content.*;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import android.speech.tts.TextToSpeech;
-import android.view.*;
-import android.widget.TextView;
 import java.util.Locale;
-
-import android.widget.*;
-import com.android.volley.Request;
-
-
-import com.squareup.picasso.*;
 
 
 
@@ -43,6 +43,8 @@ public class WordPopup {
     private boolean syllablesFetched = false;
     private boolean iconFetched = false;
 
+    private LinearLayout popup;
+
     public WordPopup (View v, Context c) {
 
         view = v;
@@ -64,7 +66,12 @@ public class WordPopup {
             }
         });
 
+        popup = view.findViewById(R.id.popup);
 
+    }
+
+    public void close() {
+        popup.setVisibility(View.GONE);
     }
 
     public void loadWord(String w, float x, float y){
@@ -92,11 +99,11 @@ public class WordPopup {
         ((TextView) view.findViewById(R.id.syllablesText)).setText(text);
 
         //position the popup
-        view.findViewById(R.id.popup).setY(yCoord);
+        popup.setY(yCoord);
 
 
         //show the popup
-        view.findViewById(R.id.popup).setVisibility(View.VISIBLE);
+        popup.setVisibility(View.VISIBLE);
 
 
     }
